@@ -1,0 +1,14 @@
+{
+  "name": "chat-genius-server",
+  "version": "0.1.0",
+  "description": "The server code for the ChatGenius messaging web application developed using node js and express js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Azaldin Freidoon",
+  "license": "SEE LICENSE IN Handbook.pdf",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
