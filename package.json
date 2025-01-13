@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "dev": "node -r dotenv/config src/app.js dotenv_config_path=.env.development",
+    "start": "node src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Azaldin Freidoon",

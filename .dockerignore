@@ -1,0 +1,24 @@
+# Node
+node_modules
+npm-debug.log
+
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile
+.dockerignore
+
+# Environment files
+.env.example
+.env
+.env.*
+
+# Miscellaneous
+.DS_Store
+.vscode
+.vscode/*
+logs
+logs/*
+Handbook.pdf
