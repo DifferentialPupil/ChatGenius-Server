@@ -4,7 +4,7 @@
   "description": "The server code for the ChatGenius messaging web application developed using node js and express js",
   "main": "app.js",
   "scripts": {
-    "dev": "node -r dotenv/config src/app.js dotenv_config_path=.env.development",
+    "dev": "nodemon -r dotenv/config src/app.js dotenv_config_path=.env.development",
     "start": "node src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,6 +12,10 @@
   "license": "SEE LICENSE IN Handbook.pdf",
   "dependencies": {
     "dotenv": "^16.4.7",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
   }
 }
