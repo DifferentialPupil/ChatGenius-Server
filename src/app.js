@@ -2,6 +2,7 @@ const express = require('express')
 const { createServer } = require('node:http')
 const { join } = require('node:path')
 const initSocket = require('./socket/index')
+const validateAccessToken = require('./middleware/auth0.middleware')
 
 const app = express()
 const port = process.env.PORT
@@ -12,7 +13,9 @@ const cors = require('cors')
 app.use(cors())
 
 // Route for the main page
-app.get('/', (req, res) => {})
+app.get('/', validateAccessToken, (req, res) => {
+  res.send('Hello World')
+})
 
 // Socket implementation
 initSocket(server)
