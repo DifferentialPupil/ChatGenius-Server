@@ -4,9 +4,10 @@
 
 const { Server } = require('socket.io');
 const eventHandlers = require('./eventHandlers');
+let io;
 
 function initSocket(httpServer) {
-  const io = new Server(httpServer, {
+  io = new Server(httpServer, {
     cors: {
       origin: process.env.CLIENT_URL,
       methods: ['GET', 'POST'],
@@ -23,4 +24,14 @@ function initSocket(httpServer) {
   return io;
 }
 
-module.exports = initSocket;
+function getIO() {
+  if (!io) {
+    next(new Error('Socket.IO is not initialized'));
+  }
+  return io;
+}
+
+module.exports = {
+  initSocket,
+  getIO
+};

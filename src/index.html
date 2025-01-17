@@ -17,8 +17,11 @@
     </style>
   </head>
   <body>
-    <button id="Room1">Room 1</button>
-    <button id="Room2">Room 2</button>
+    <div>
+      To whom it may concern,<br>
+
+      This is a rudimentary chat application for the purposes of testing RAG functionality.
+    </div>
     <ul id="messages"></ul>
     <form id="form" action="">
       <input id="input" autocomplete="off" /><button>Send</button>
@@ -28,36 +31,129 @@
       var socket = io("http://localhost:4000", {
         withCredentials: false
       });
-  
+
+      console.log("Attempting to create user")
+
       var form = document.getElementById('form');
       var input = document.getElementById('input');
       const messages = document.getElementById('messages');
+      
+      let current_user = null
+      let channels_array = null
+      let current_channel = null
+      try {
+        // created a user
+        fetch('http://localhost:4000/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ 
+            auth0Id: Math.random(),
+            username: 'John Doe' + Math.random(),
+            displayname: 'John Doe' + Math.random(),
+            email: Math.random() + '@example.com',
+            workspaceid: '115aa41d-a41e-4194-a2c8-6af4e6c7e7e3',
+            role: 'Admin'
+           })
+        }).then(response => {
+          response.json().then(user => {
+            current_user = user
+            fetch('http://localhost:4000/channels', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }).then(response => {
+            console.log("Response:", response)
+            response.json().then(channels => {
+              channels_array = channels
+
+              // Create a button for each channel
+              channels_array.forEach(channel => {
+                const button = document.createElement('button')
+                button.id = channel.channelid
+                button.textContent = channel.name
+                document.body.appendChild(button)
+                button.addEventListener('click', () => {
+                  current_channel = channel.channelid
+                  messages.innerHTML = ''
+                  // fetch all current channel messages
+                  console.log("Fetching messages for channel " + channel.channelid)
+                  fetch(`http://localhost:4000/messages/${channel.channelid}`, {
+                    method: 'GET',
+                    headers: {
+                      'Content-Type': 'application/json'
+                    }
+                  }).then(response => {
+                    response.json().then(messages => {
+                      console.log(messages)
+                      messages.forEach(message => {
+                        const item = document.createElement('li');
+                        item.textContent = message;
+                        messages.appendChild(item);
+                      })
+                    })
+                  })
+                })
+              })
+              // join all channels
+              console.log(channels_array)
+              channels.forEach(channel => {
+                fetch(`http://localhost:4000/channelmembers/${channel.channelid}/join`, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({ 
+                    userid: user.userid,
+                    role: 'admin',
+                    socketid: socket.id
+                  })
+                }).then(response => {
+                  console.log("Response:", response)
+                })
+              })
+            })
+          })
+          })
+          
+        })
+      } catch (err) {
+        console.error(err);
+      }
   
-      form.addEventListener('submit', (e) => {
+      form.addEventListener('submit', (e, input) => {
         e.preventDefault();
-        if (input.value) {
-          socket.emit('chat message', input.value);
-          input.value = '';
-        }
+        // if (input.value) {
+        //   socket.emit('chat message', input.value);
+        //   input.value = '';
+        // }
+        // log input value
+        console.log(input.value)
+        fetch(`http://localhost:4000/messages`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ 
+            content: input.value,
+            channelId: current_channel,
+            senderId: current_user.userid
+          })
+        }).then(response => {
+          console.log("Response:", response)
+        })
       });
 
       socket.on('chat message', (msg) => {
-        const item = document.createElement('li');
-        item.textContent = msg;
-        messages.appendChild(item);
-        window.scrollTo(0, document.body.scrollHeight);
+        JSON.stringify(msg).then(msg => {
+          const item = document.createElement('li');
+          item.textContent = msg.userid + ": " + msg.content;
+          messages.appendChild(item);
+          window.scrollTo(0, document.body.scrollHeight);
+        })
       });
-
-      var room1 = document.getElementById('Room1')
-      var room2 = document.getElementById('Room2')
-
-      room1.addEventListener('click', () => {
-        socket.emit('join room', '1')
-      })
-
-      room2.addEventListener('click', () => {
-        socket.emit('join room', '2')
-      })
     </script>
   </body>
 </html>
