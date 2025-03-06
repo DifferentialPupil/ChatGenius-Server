@@ -25,6 +25,12 @@ const {
   updateNotificationPreferences
 } = require('../controllers/notifications');
 
+// Import mention functions
+const {
+  getUserMentions,
+  countUnreadMentions
+} = require('../controllers/mentions');
+
 const router = express.Router();
 
 // Public routes
@@ -40,6 +46,10 @@ router
   .get('/me/notification-preferences', getNotificationPreferences) // Get notification preferences
   .patch('/me/notification-preferences', updateNotificationPreferences) // Update notification preferences
   .get('/me/direct-messages', getUserDirectMessages) // Get direct message conversations
+  
+  // Mentions
+  .get('/me/mentions', getUserMentions) // Get mentions for current user
+  .get('/me/mentions/count', countUnreadMentions) // Count unread mentions
   
   // AI Avatar management
   .get('/me/avatar', getUserAvatar) // Get user's AI avatar

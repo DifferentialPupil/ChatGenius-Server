@@ -6,10 +6,6 @@ npm-debug.log
 .git
 .gitignore
 
-# Docker
-Dockerfile
-.dockerignore
-
 # Environment files
 .env.example
 .env
@@ -22,3 +18,7 @@ Dockerfile
 logs
 logs/*
 Handbook.pdf
+
+# Cursor
+.cursorrules
+.cursorignore

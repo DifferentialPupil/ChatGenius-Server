@@ -20,16 +20,60 @@
                 </select>
             </div>
             <div class="param-input">
-                <label for="mention-get-page">page:</label>
-                <input type="number" id="mention-get-page" class="form-control" placeholder="Page number (optional)">
+                <label for="mention-get-offset">offset:</label>
+                <input type="number" id="mention-get-offset" class="form-control" placeholder="Offset for pagination (default: 0)">
             </div>
             <div class="param-input">
                 <label for="mention-get-limit">limit:</label>
-                <input type="number" id="mention-get-limit" class="form-control" placeholder="Items per page (optional)">
+                <input type="number" id="mention-get-limit" class="form-control" placeholder="Items per page (default: 20)">
             </div>
         </div>
         
-        <button class="btn btn-primary test-endpoint" data-method="GET" data-endpoint="/api/users/me/mentions" data-query-params="unread:mention-get-unread,page:mention-get-page,limit:mention-get-limit">
+        <button class="btn btn-primary test-endpoint" data-method="GET" data-endpoint="/api/users/me/mentions" data-query-params="unread:mention-get-unread,offset:mention-get-offset,limit:mention-get-limit">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/users/me/mentions/count</span>
+        </h4>
+        <p class="mb-3">Count unread mentions</p>
+        <p><strong>Description:</strong> Get a count of unread mentions for the current user</p>
+        
+        <button class="btn btn-primary test-endpoint" data-method="GET" data-endpoint="/api/users/me/mentions/count">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/mentions/{mentionId}</span>
+        </h4>
+        <p class="mb-3">Get mention by ID</p>
+        <p><strong>Description:</strong> Get details of a specific mention by ID</p>
+        
+        <div class="param-section">
+            <h5>Path Parameters</h5>
+            <div class="param-input">
+                <label for="mention-get-id">mentionId:</label>
+                <input type="text" id="mention-get-id" class="form-control" placeholder="Mention ID">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="GET" data-endpoint="/api/mentions/{mentionId}" data-replace-params="mentionId:mention-get-id">
             Test Endpoint
             <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
         </button>

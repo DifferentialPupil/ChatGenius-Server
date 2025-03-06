@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Azaldin Freidoon",
-  "license": "SEE LICENSE IN Handbook.pdf",
+  "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
     "aws-sdk": "^2.1692.0",
     "crypto": "^1.0.1",

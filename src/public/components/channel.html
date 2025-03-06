@@ -266,6 +266,40 @@
         </div>
     </div>
     
+    <!-- GET /api/channels/{channelId}/files -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/channels/{channelId}/files</span>
+        </h4>
+        <p>Get files shared in a channel</p>
+        <div class="param-input">
+            <label>channelId:</label>
+            <input type="text" class="form-control" id="channel-files-id" placeholder="Enter channel ID">
+        </div>
+        <div class="param-input">
+            <label>Query Parameters:</label>
+            <div class="row mb-2">
+                <div class="col-md-4">
+                    <input type="number" class="form-control" id="channel-files-page" placeholder="page (default: 1)">
+                </div>
+                <div class="col-md-4">
+                    <input type="number" class="form-control" id="channel-files-limit" placeholder="limit (default: 20)">
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="channel-files-search" placeholder="search query (optional)">
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/channels/{channelId}/files" data-replace-params="channelId:channel-files-id" data-query-params="page:channel-files-page,limit:channel-files-limit,search:channel-files-search">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
     <!-- GET /api/channels/{channelId}/pins -->
     <div class="endpoint">
         <h4>

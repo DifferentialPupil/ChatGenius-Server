@@ -132,14 +132,64 @@
         </div>
     </div>
     
+    <!-- GET /api/users/me/mentions -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/users/me/mentions</span>
+        </h4>
+        <p>Get mentions for the current user</p>
+        <div class="param-input">
+            <label>Query Parameters:</label>
+            <div class="row mb-2">
+                <div class="col-md-4">
+                    <select class="form-control" id="user-mentions-unread">
+                        <option value="">All mentions</option>
+                        <option value="true">Unread only</option>
+                        <option value="false">Read only</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <input type="number" class="form-control" id="user-mentions-offset" placeholder="offset (default: 0)">
+                </div>
+                <div class="col-md-4">
+                    <input type="number" class="form-control" id="user-mentions-limit" placeholder="limit (default: 20)">
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/users/me/mentions" data-query-params="unread:user-mentions-unread,offset:user-mentions-offset,limit:user-mentions-limit">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- GET /api/users/me/mentions/count -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/users/me/mentions/count</span>
+        </h4>
+        <p>Count unread mentions for the current user</p>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/users/me/mentions/count">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
     <!-- GET /api/users/me/preferences -->
     <div class="endpoint">
         <h4>
             <span class="http-method get">GET</span>
-            <span class="endpoint-url">/api/users/me/preferences</span>
+            <span class="endpoint-url">/api/users/me/notification-preferences</span>
         </h4>
         <p>Get the current user's notification preferences</p>
-        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/users/me/preferences">
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/users/me/notification-preferences">
             Test Endpoint
             <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
         </button>
@@ -152,14 +202,14 @@
     <div class="endpoint">
         <h4>
             <span class="http-method patch">PATCH</span>
-            <span class="endpoint-url">/api/users/me/preferences</span>
+            <span class="endpoint-url">/api/users/me/notification-preferences</span>
         </h4>
         <p>Update the current user's notification preferences</p>
         <div class="param-input">
             <label>Request Body:</label>
             <textarea class="form-control" rows="5" id="user-preferences-body" placeholder='{"notifyOnDirectMessage": true, "notifyOnChannelMessage": true, "notifyOnMention": true, "soundEnabled": true, "desktopNotificationsEnabled": true}'></textarea>
         </div>
-        <button class="btn btn-sm btn-primary test-endpoint" data-method="PATCH" data-endpoint="/api/users/me/preferences" data-has-body="true" data-body-fields="body:user-preferences-body">
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="PATCH" data-endpoint="/api/users/me/notification-preferences" data-has-body="true" data-body-fields="body:user-preferences-body">
             Test Endpoint
             <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
         </button>
