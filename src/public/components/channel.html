@@ -1,0 +1,352 @@
+<!-- Channel Endpoints -->
+<div id="channel-component">
+    <h2 class="category-header">Channel Endpoints</h2>
+    
+    <!-- GET /api/workspaces/{workspaceId}/channels -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/channels/workspace/{workspaceId}</span>
+        </h4>
+        <p>Get a list of channels in a workspace</p>
+        <div class="param-input">
+            <label>workspaceId:</label>
+            <input type="text" class="form-control" id="channel-list-workspace-id" placeholder="Enter workspace ID">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/channels/workspace/{workspaceId}" data-replace-params="workspaceId:channel-list-workspace-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- GET /api/channels/{channelId} -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/channels/{channelId}</span>
+        </h4>
+        <p>Get details of a specific channel</p>
+        <div class="param-input">
+            <label>channelId:</label>
+            <input type="text" class="form-control" id="channel-get-id" placeholder="Enter channel ID">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/channels/{channelId}" data-replace-params="channelId:channel-get-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- POST /api/workspaces/{workspaceId}/channels -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method post">POST</span>
+            <span class="endpoint-url">/api/channels/create/{workspaceId}</span>
+        </h4>
+        <p>Create a new channel</p>
+        <div class="param-input">
+            <label>workspaceId:</label>
+            <input type="text" class="form-control" id="channel-create-workspace-id" placeholder="Enter workspace ID">
+        </div>
+        <div class="param-input">
+            <label>Request Body:</label>
+            <textarea class="form-control" rows="4" id="channel-create-body" placeholder='{"name": "new-channel", "description": "A new channel", "isPublic": true, "topic": "Channel topic"}'></textarea>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-endpoint="/api/channels/create/{workspaceId}" data-replace-params="workspaceId:channel-create-workspace-id" data-has-body="true" data-body-fields="body:channel-create-body">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- PATCH /api/channels/{channelId} -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method patch">PATCH</span>
+            <span class="endpoint-url">/api/channels/{channelId}</span>
+        </h4>
+        <p>Update a channel's details</p>
+        <div class="param-input">
+            <label>channelId:</label>
+            <input type="text" class="form-control" id="channel-patch-id" placeholder="Enter channel ID">
+        </div>
+        <div class="param-input">
+            <label>Request Body:</label>
+            <textarea class="form-control" rows="4" id="channel-patch-body" placeholder='{"name": "updated-channel", "description": "Updated description", "isPublic": true, "topic": "Updated topic"}'></textarea>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="PATCH" data-endpoint="/api/channels/{channelId}" data-replace-params="channelId:channel-patch-id" data-has-body="true" data-body-fields="body:channel-patch-body">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- DELETE /api/channels/{channelId} -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method delete">DELETE</span>
+            <span class="endpoint-url">/api/channels/{channelId}</span>
+        </h4>
+        <p>Delete a channel</p>
+        <div class="param-input">
+            <label>channelId:</label>
+            <input type="text" class="form-control" id="channel-delete-id" placeholder="Enter channel ID">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="DELETE" data-endpoint="/api/channels/{channelId}" data-replace-params="channelId:channel-delete-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- GET /api/channels/{channelId}/members -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/channels/{channelId}/members</span>
+        </h4>
+        <p>Get a list of members in a channel</p>
+        <div class="param-input">
+            <label>channelId:</label>
+            <input type="text" class="form-control" id="channel-members-get-id" placeholder="Enter channel ID">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/channels/{channelId}/members" data-replace-params="channelId:channel-members-get-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- POST /api/channels/{channelId}/members -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method post">POST</span>
+            <span class="endpoint-url">/api/channels/{channelId}/members</span>
+        </h4>
+        <p>Add members to a channel</p>
+        <div class="param-input">
+            <label>channelId:</label>
+            <input type="text" class="form-control" id="channel-members-add-id" placeholder="Enter channel ID">
+        </div>
+        <div class="param-input">
+            <label>Request Body:</label>
+            <textarea class="form-control" rows="3" id="channel-members-add-body" placeholder='{"userIds": ["userId1", "userId2"]}'></textarea>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-endpoint="/api/channels/{channelId}/members" data-replace-params="channelId:channel-members-add-id" data-has-body="true" data-body-fields="body:channel-members-add-body">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- DELETE /api/channels/{channelId}/members/{userId} -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method delete">DELETE</span>
+            <span class="endpoint-url">/api/channels/{channelId}/members/{userId}</span>
+        </h4>
+        <p>Remove a member from a channel</p>
+        <div class="param-input">
+            <label>channelId:</label>
+            <input type="text" class="form-control" id="channel-member-remove-channel-id" placeholder="Enter channel ID">
+        </div>
+        <div class="param-input">
+            <label>userId:</label>
+            <input type="text" class="form-control" id="channel-member-remove-user-id" placeholder="Enter user ID">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="DELETE" data-endpoint="/api/channels/{channelId}/members/{userId}" data-replace-params="channelId:channel-member-remove-channel-id,userId:channel-member-remove-user-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- POST /api/channels/{channelId}/join -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method post">POST</span>
+            <span class="endpoint-url">/api/channels/{channelId}/join</span>
+        </h4>
+        <p>Join a public channel</p>
+        <div class="param-input">
+            <label>channelId:</label>
+            <input type="text" class="form-control" id="channel-join-id" placeholder="Enter channel ID">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-endpoint="/api/channels/{channelId}/join" data-replace-params="channelId:channel-join-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- DELETE /api/channels/{channelId}/leave -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method delete">DELETE</span>
+            <span class="endpoint-url">/api/channels/{channelId}/leave</span>
+        </h4>
+        <p>Leave a channel</p>
+        <div class="param-input">
+            <label>channelId:</label>
+            <input type="text" class="form-control" id="channel-leave-id" placeholder="Enter channel ID">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="DELETE" data-endpoint="/api/channels/{channelId}/leave" data-replace-params="channelId:channel-leave-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- GET /api/channels/{channelId}/messages -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/channels/{channelId}/messages</span>
+        </h4>
+        <p>Get messages for a specific channel</p>
+        <div class="param-input">
+            <label>channelId:</label>
+            <input type="text" class="form-control" id="channel-messages-id" placeholder="Enter channel ID">
+        </div>
+        <div class="param-input">
+            <label>Optional Query Parameters:</label>
+            <input type="text" class="form-control" id="channel-messages-query" placeholder="limit=20&before=messageId">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/channels/{channelId}/messages" data-replace-params="channelId:channel-messages-id" data-custom-query-string="channel-messages-query">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- POST /api/channels/{channelId}/messages -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method post">POST</span>
+            <span class="endpoint-url">/api/channels/{channelId}/messages</span>
+        </h4>
+        <p>Send a new message to a channel</p>
+        <div class="param-input">
+            <label>channelId:</label>
+            <input type="text" class="form-control" id="channel-send-message-id" placeholder="Enter channel ID">
+        </div>
+        <div class="param-input">
+            <label>Request Body:</label>
+            <textarea class="form-control" rows="3" id="channel-send-message-body" placeholder='{"content": "Hello, this is a message!", "attachments": []}'></textarea>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-endpoint="/api/channels/{channelId}/messages" data-replace-params="channelId:channel-send-message-id" data-has-body="true" data-body-fields="body:channel-send-message-body">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- GET /api/channels/{channelId}/pins -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/channels/{channelId}/pins</span>
+        </h4>
+        <p>Get a list of pinned items in a channel</p>
+        <div class="param-input">
+            <label>channelId:</label>
+            <input type="text" class="form-control" id="channel-pins-get-id" placeholder="Enter channel ID">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/channels/{channelId}/pins" data-replace-params="channelId:channel-pins-get-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- POST /api/channels/{channelId}/pins -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method post">POST</span>
+            <span class="endpoint-url">/api/channels/{channelId}/pins</span>
+        </h4>
+        <p>Pin a message or file to a channel</p>
+        <div class="param-input">
+            <label>channelId:</label>
+            <input type="text" class="form-control" id="channel-pin-add-id" placeholder="Enter channel ID">
+        </div>
+        <div class="param-input">
+            <label>Request Body:</label>
+            <textarea class="form-control" rows="3" id="channel-pin-add-body" placeholder='{"messageId": "messageId"} OR {"fileId": "fileId"}'></textarea>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-endpoint="/api/channels/{channelId}/pins" data-replace-params="channelId:channel-pin-add-id" data-has-body="true" data-body-fields="body:channel-pin-add-body">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- DELETE /api/channels/{channelId}/pins/{pinnedItemId} -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method delete">DELETE</span>
+            <span class="endpoint-url">/api/channels/{channelId}/pins/{pinnedItemId}</span>
+        </h4>
+        <p>Unpin an item from a channel</p>
+        <div class="param-input">
+            <label>channelId:</label>
+            <input type="text" class="form-control" id="channel-pin-remove-channel-id" placeholder="Enter channel ID">
+        </div>
+        <div class="param-input">
+            <label>pinnedItemId:</label>
+            <input type="text" class="form-control" id="channel-pin-remove-item-id" placeholder="Enter pinned item ID">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="DELETE" data-endpoint="/api/channels/{channelId}/pins/{pinnedItemId}" data-replace-params="channelId:channel-pin-remove-channel-id,pinnedItemId:channel-pin-remove-item-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- GET /api/users/me/channels -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/channels/user/me</span>
+        </h4>
+        <p>Get a list of channels the current user is a member of</p>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/channels/user/me">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+</div> 

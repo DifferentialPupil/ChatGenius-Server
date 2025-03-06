@@ -1,0 +1,244 @@
+<!-- Workspace Endpoints -->
+<div id="workspace-component">
+    <h2 class="category-header">Workspace Endpoints</h2>
+    
+    <!-- GET /api/workspaces -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/workspaces</span>
+        </h4>
+        <p>Get a list of all workspaces the user is a member of</p>
+        <div class="param-input">
+            <label>Query Parameters:</label>
+            <div class="row mb-2">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="workspace-list-page" placeholder="page (default: 1)">
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="workspace-list-limit" placeholder="limit (default: 20)">
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/workspaces" data-query-params="page:workspace-list-page,limit:workspace-list-limit">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+
+    <!-- GET /api/workspaces/me -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/workspaces/me</span>
+        </h4>
+        <p>Get details of the current user's primary workspace</p>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/workspaces/me">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- GET /api/workspaces/{workspaceId} -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/workspaces/{workspaceId}</span>
+        </h4>
+        <p>Get details of a specific workspace</p>
+        <div class="param-input">
+            <label>workspaceId:</label>
+            <input type="text" class="form-control" id="workspace-get-id" placeholder="Enter workspace ID">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/workspaces/{workspaceId}" data-replace-params="workspaceId:workspace-get-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- GET /api/workspaces/{workspaceId}/data -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/workspaces/{workspaceId}/data</span>
+        </h4>
+        <p>Get all data related to a workspace (workspace details, members, channels)</p>
+        <div class="param-input">
+            <label>workspaceId:</label>
+            <input type="text" class="form-control" id="workspace-data-id" placeholder="Enter workspace ID">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/workspaces/{workspaceId}/data" data-replace-params="workspaceId:workspace-data-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- POST /api/workspaces -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method post">POST</span>
+            <span class="endpoint-url">/api/workspaces</span>
+        </h4>
+        <p>Create a new workspace</p>
+        <div class="param-input">
+            <label>Request Body:</label>
+            <textarea class="form-control" rows="4" id="workspace-post-body" placeholder='{"name": "New Workspace", "logoUrl": "https://example.com/logo.png"}'></textarea>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-endpoint="/api/workspaces" data-has-body="true" data-body-fields="body:workspace-post-body">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- PATCH /api/workspaces/{workspaceId} -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method patch">PATCH</span>
+            <span class="endpoint-url">/api/workspaces/{workspaceId}</span>
+        </h4>
+        <p>Update a workspace's details</p>
+        <div class="param-input">
+            <label>workspaceId:</label>
+            <input type="text" class="form-control" id="workspace-patch-id" placeholder="Enter workspace ID">
+        </div>
+        <div class="param-input">
+            <label>Request Body:</label>
+            <textarea class="form-control" rows="4" id="workspace-patch-body" placeholder='{"name": "Updated Workspace Name", "logoUrl": "https://example.com/new-logo.png"}'></textarea>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="PATCH" data-endpoint="/api/workspaces/{workspaceId}" data-replace-params="workspaceId:workspace-patch-id" data-has-body="true" data-body-fields="body:workspace-patch-body">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- GET /api/workspaces/{workspaceId}/users -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/workspaces/{workspaceId}/users</span>
+        </h4>
+        <p>Get all users in a workspace (Admin only)</p>
+        <div class="param-input">
+            <label>workspaceId:</label>
+            <input type="text" class="form-control" id="workspace-users-id" placeholder="Enter workspace ID">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/workspaces/{workspaceId}/users" data-replace-params="workspaceId:workspace-users-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- POST /api/workspaces/{workspaceId}/users/invite -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method post">POST</span>
+            <span class="endpoint-url">/api/workspaces/{workspaceId}/users/invite</span>
+        </h4>
+        <p>Invite users to a workspace (Admin only)</p>
+        <div class="param-input">
+            <label>workspaceId:</label>
+            <input type="text" class="form-control" id="workspace-invite-id" placeholder="Enter workspace ID">
+        </div>
+        <div class="param-input">
+            <label>Request Body:</label>
+            <textarea class="form-control" rows="4" id="workspace-invite-body" placeholder='{"emails": ["user1@example.com", "user2@example.com"]}'></textarea>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-endpoint="/api/workspaces/{workspaceId}/users/invite" data-replace-params="workspaceId:workspace-invite-id" data-has-body="true" data-body-fields="body:workspace-invite-body">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- DELETE /api/workspaces/{workspaceId}/users/{userId} -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method delete">DELETE</span>
+            <span class="endpoint-url">/api/workspaces/{workspaceId}/users/{userId}</span>
+        </h4>
+        <p>Remove a user from a workspace (Admin only)</p>
+        <div class="param-input">
+            <label>workspaceId:</label>
+            <input type="text" class="form-control" id="workspace-remove-user-workspace-id" placeholder="Enter workspace ID">
+        </div>
+        <div class="param-input">
+            <label>userId:</label>
+            <input type="text" class="form-control" id="workspace-remove-user-user-id" placeholder="Enter user ID to remove">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="DELETE" data-endpoint="/api/workspaces/{workspaceId}/users/{userId}" data-replace-params="workspaceId:workspace-remove-user-workspace-id,userId:workspace-remove-user-user-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- GET /api/workspaces/{workspaceId}/settings -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/workspaces/{workspaceId}/settings</span>
+        </h4>
+        <p>Get workspace settings</p>
+        <div class="param-input">
+            <label>workspaceId:</label>
+            <input type="text" class="form-control" id="workspace-settings-get-id" placeholder="Enter workspace ID">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/workspaces/{workspaceId}/settings" data-replace-params="workspaceId:workspace-settings-get-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- PATCH /api/workspaces/{workspaceId}/settings -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method patch">PATCH</span>
+            <span class="endpoint-url">/api/workspaces/{workspaceId}/settings</span>
+        </h4>
+        <p>Update workspace settings</p>
+        <div class="param-input">
+            <label>workspaceId:</label>
+            <input type="text" class="form-control" id="workspace-settings-patch-id" placeholder="Enter workspace ID">
+        </div>
+        <div class="param-input">
+            <label>Request Body:</label>
+            <textarea class="form-control" rows="4" id="workspace-settings-patch-body" placeholder='{"aiGlobalAutonomyLevel": "review"}'></textarea>
+            <small class="text-muted">Valid values for aiGlobalAutonomyLevel: "manual", "review", "auto"</small>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="PATCH" data-endpoint="/api/workspaces/{workspaceId}/settings" data-replace-params="workspaceId:workspace-settings-patch-id" data-has-body="true" data-body-fields="body:workspace-settings-patch-body">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+</div> 

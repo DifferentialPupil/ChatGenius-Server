@@ -1,0 +1,180 @@
+<!-- Direct Message Endpoints -->
+<div id="direct-message-component">
+    <h2 class="category-header">Direct Message Endpoints</h2>
+    
+    <!-- GET /api/directmessages/{directMessageId} -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/directmessages/{directMessageId}</span>
+        </h4>
+        <p>Get details of a specific direct message</p>
+        <div class="param-input">
+            <label>directMessageId:</label>
+            <input type="text" class="form-control" id="dm-get-id" placeholder="Enter direct message ID">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/directmessages/{directMessageId}" data-replace-params="directMessageId:dm-get-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- POST /api/directmessages/{recipientId} -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method post">POST</span>
+            <span class="endpoint-url">/api/directmessages/{recipientId}</span>
+        </h4>
+        <p>Send a new direct message to a user</p>
+        <div class="param-input">
+            <label>recipientId:</label>
+            <input type="text" class="form-control" id="dm-send-recipient-id" placeholder="Enter recipient user ID">
+        </div>
+        <div class="param-input">
+            <label>Request Body:</label>
+            <textarea class="form-control" rows="4" id="dm-send-body" placeholder='{"content": "Hello, this is a direct message!", "attachments": []}'></textarea>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-endpoint="/api/directmessages/{recipientId}" data-replace-params="recipientId:dm-send-recipient-id" data-has-body="true" data-body-fields="body:dm-send-body">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- GET /api/users/me/conversations -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/users/me</span>
+        </h4>
+        <p>Get a list of the current user's direct message conversations</p>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/users/me">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- GET /api/conversations/{userId}/messages -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/directmessages/conversations/{userId}</span>
+        </h4>
+        <p>Get messages in a direct message conversation with a specific user</p>
+        <div class="param-input">
+            <label>userId:</label>
+            <input type="text" class="form-control" id="conversation-get-user-id" placeholder="Enter user ID">
+        </div>
+        <div class="param-input">
+            <label>Optional Query Parameters:</label>
+            <input type="text" class="form-control" id="conversation-get-query" placeholder="limit=20&before=messageId">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/directmessages/conversations/{userId}" data-replace-params="userId:conversation-get-user-id" data-custom-query-string="conversation-get-query">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- PATCH /api/directmessages/{directMessageId} -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method patch">PATCH</span>
+            <span class="endpoint-url">/api/directmessages/{directMessageId}</span>
+        </h4>
+        <p>Edit an existing direct message</p>
+        <div class="param-input">
+            <label>directMessageId:</label>
+            <input type="text" class="form-control" id="dm-patch-id" placeholder="Enter direct message ID">
+        </div>
+        <div class="param-input">
+            <label>Request Body:</label>
+            <textarea class="form-control" rows="4" id="dm-patch-body" placeholder='{"content": "Updated direct message content"}'></textarea>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="PATCH" data-endpoint="/api/directmessages/{directMessageId}" data-replace-params="directMessageId:dm-patch-id" data-has-body="true" data-body-fields="body:dm-patch-body">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- DELETE /api/directmessages/{directMessageId} -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method delete">DELETE</span>
+            <span class="endpoint-url">/api/directmessages/{directMessageId}</span>
+        </h4>
+        <p>Delete a direct message</p>
+        <div class="param-input">
+            <label>directMessageId:</label>
+            <input type="text" class="form-control" id="dm-delete-id" placeholder="Enter direct message ID">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="DELETE" data-endpoint="/api/directmessages/{directMessageId}" data-replace-params="directMessageId:dm-delete-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- POST /api/directmessages/{directMessageId}/reactions -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method post">POST</span>
+            <span class="endpoint-url">/api/directmessages/{directMessageId}/reactions</span>
+        </h4>
+        <p>Add a reaction to a direct message</p>
+        <div class="param-input">
+            <label>directMessageId:</label>
+            <input type="text" class="form-control" id="dm-reaction-add-id" placeholder="Enter direct message ID">
+        </div>
+        <div class="param-input">
+            <label>Request Body:</label>
+            <textarea class="form-control" rows="2" id="dm-reaction-add-body" placeholder='{"emoji": "👍"}'></textarea>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-endpoint="/api/directmessages/{directMessageId}/reactions" data-replace-params="directMessageId:dm-reaction-add-id" data-has-body="true" data-body-fields="body:dm-reaction-add-body">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- DELETE /api/directmessages/{directMessageId}/reactions/{reactionId} -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method delete">DELETE</span>
+            <span class="endpoint-url">/api/directmessages/{directMessageId}/reactions/{reactionId}</span>
+        </h4>
+        <p>Remove a reaction from a direct message</p>
+        <div class="param-input">
+            <label>directMessageId:</label>
+            <input type="text" class="form-control" id="dm-reaction-remove-dm-id" placeholder="Enter direct message ID">
+        </div>
+        <div class="param-input">
+            <label>reactionId:</label>
+            <input type="text" class="form-control" id="dm-reaction-remove-reaction-id" placeholder="Enter reaction ID">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="DELETE" data-endpoint="/api/directmessages/{directMessageId}/reactions/{reactionId}" data-replace-params="directMessageId:dm-reaction-remove-dm-id,reactionId:dm-reaction-remove-reaction-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+</div> 

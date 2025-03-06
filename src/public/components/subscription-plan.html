@@ -1,0 +1,123 @@
+<div id="subscription-plan-component">
+    <h2 class="mb-4">Subscription Plan Endpoints</h2>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/subscription-plans</span>
+        </h4>
+        <p class="mb-3">Get all subscription plans</p>
+        <p><strong>Description:</strong> Get a list of available subscription plans</p>
+        
+        <button class="btn btn-primary test-endpoint" data-method="GET" data-endpoint="/api/subscription-plans">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/workspaces/{workspaceId}/subscription</span>
+        </h4>
+        <p class="mb-3">Get workspace subscription</p>
+        <p><strong>Description:</strong> Get the subscription details for a workspace</p>
+        
+        <div class="param-section">
+            <h5>Path Parameters</h5>
+            <div class="param-input">
+                <label for="subscription-get-workspace-id">workspaceId:</label>
+                <input type="text" id="subscription-get-workspace-id" class="form-control" placeholder="Workspace ID">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="GET" data-endpoint="/api/workspaces/{workspaceId}/subscription" data-replace-params="workspaceId:subscription-get-workspace-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method post">POST</span>
+            <span class="endpoint-url">/api/workspaces/{workspaceId}/subscription</span>
+        </h4>
+        <p class="mb-3">Subscribe to a plan</p>
+        <p><strong>Description:</strong> Subscribe a workspace to a plan</p>
+        
+        <div class="param-section">
+            <h5>Path Parameters</h5>
+            <div class="param-input">
+                <label for="subscription-post-workspace-id">workspaceId:</label>
+                <input type="text" id="subscription-post-workspace-id" class="form-control" placeholder="Workspace ID">
+            </div>
+        </div>
+        
+        <div class="param-section">
+            <h5>Request Body</h5>
+            <div class="param-input">
+                <label for="subscription-post-plan-id">planId:</label>
+                <input type="text" id="subscription-post-plan-id" class="form-control" placeholder="Subscription Plan ID">
+            </div>
+            <div class="param-input">
+                <label for="subscription-post-billing">billingInformation:</label>
+                <textarea id="subscription-post-billing" class="form-control" placeholder="{...} (JSON object with billing information)"></textarea>
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="POST" data-endpoint="/api/workspaces/{workspaceId}/subscription" data-replace-params="workspaceId:subscription-post-workspace-id" data-has-body="true" data-body-fields="planId:subscription-post-plan-id,billingInformation:subscription-post-billing">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method patch">PATCH</span>
+            <span class="endpoint-url">/api/workspaces/{workspaceId}/subscription</span>
+        </h4>
+        <p class="mb-3">Update subscription</p>
+        <p><strong>Description:</strong> Update a workspace's subscription</p>
+        
+        <div class="param-section">
+            <h5>Path Parameters</h5>
+            <div class="param-input">
+                <label for="subscription-patch-workspace-id">workspaceId:</label>
+                <input type="text" id="subscription-patch-workspace-id" class="form-control" placeholder="Workspace ID">
+            </div>
+        </div>
+        
+        <div class="param-section">
+            <h5>Request Body</h5>
+            <div class="param-input">
+                <label for="subscription-patch-plan-id">planId:</label>
+                <input type="text" id="subscription-patch-plan-id" class="form-control" placeholder="Subscription Plan ID">
+            </div>
+            <div class="param-input">
+                <label for="subscription-patch-billing">billingInformation:</label>
+                <textarea id="subscription-patch-billing" class="form-control" placeholder="{...} (JSON object with billing information)"></textarea>
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="PATCH" data-endpoint="/api/workspaces/{workspaceId}/subscription" data-replace-params="workspaceId:subscription-patch-workspace-id" data-has-body="true" data-body-fields="planId:subscription-patch-plan-id,billingInformation:subscription-patch-billing">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+</div> 

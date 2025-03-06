@@ -1,0 +1,85 @@
+<div id="mention-component">
+    <h2 class="mb-4">Mention Endpoints</h2>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/users/me/mentions</span>
+        </h4>
+        <p class="mb-3">Get current user mentions</p>
+        <p><strong>Description:</strong> Get a list of mentions for the current user</p>
+        
+        <div class="param-section">
+            <h5>Query Parameters</h5>
+            <div class="param-input">
+                <label for="mention-get-unread">unread:</label>
+                <select id="mention-get-unread" class="form-control">
+                    <option value="">All mentions</option>
+                    <option value="true">Unread only</option>
+                    <option value="false">Read only</option>
+                </select>
+            </div>
+            <div class="param-input">
+                <label for="mention-get-page">page:</label>
+                <input type="number" id="mention-get-page" class="form-control" placeholder="Page number (optional)">
+            </div>
+            <div class="param-input">
+                <label for="mention-get-limit">limit:</label>
+                <input type="number" id="mention-get-limit" class="form-control" placeholder="Items per page (optional)">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="GET" data-endpoint="/api/users/me/mentions" data-query-params="unread:mention-get-unread,page:mention-get-page,limit:mention-get-limit">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method patch">PATCH</span>
+            <span class="endpoint-url">/api/mentions/{mentionId}/read</span>
+        </h4>
+        <p class="mb-3">Mark a mention as read</p>
+        <p><strong>Description:</strong> Mark a specific mention as read</p>
+        
+        <div class="param-section">
+            <h5>Path Parameters</h5>
+            <div class="param-input">
+                <label for="mention-patch-mention-id">mentionId:</label>
+                <input type="text" id="mention-patch-mention-id" class="form-control" placeholder="Mention ID">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="PATCH" data-endpoint="/api/mentions/{mentionId}/read" data-replace-params="mentionId:mention-patch-mention-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method patch">PATCH</span>
+            <span class="endpoint-url">/api/mentions/read-all</span>
+        </h4>
+        <p class="mb-3">Mark all mentions as read</p>
+        <p><strong>Description:</strong> Mark all mentions for the current user as read</p>
+        
+        <button class="btn btn-primary test-endpoint" data-method="PATCH" data-endpoint="/api/mentions/read-all">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+</div> 

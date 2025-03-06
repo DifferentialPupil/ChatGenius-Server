@@ -1,0 +1,197 @@
+<div id="file-component">
+    <h2 class="mb-4">File Endpoints</h2>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method post">POST</span>
+            <span class="endpoint-url">/api/files/upload</span>
+        </h4>
+        <p class="mb-3">Upload a file</p>
+        <p><strong>Description:</strong> Upload a file to be used in messages or channels</p>
+        
+        <div class="param-section">
+            <h5>Request Body</h5>
+            <div class="param-input">
+                <label>Select File:</label>
+                <input type="file" id="file-upload-input" class="form-control">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="POST" data-endpoint="/api/files/upload" data-has-body="true" data-is-file-upload="true">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/files/{fileId}</span>
+        </h4>
+        <p class="mb-3">Get file details</p>
+        <p><strong>Description:</strong> Retrieve details about a specific file</p>
+        
+        <div class="param-section">
+            <h5>Path Parameters</h5>
+            <div class="param-input">
+                <label for="file-get-file-id">fileId:</label>
+                <input type="text" id="file-get-file-id" class="form-control" placeholder="File ID">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="GET" data-endpoint="/api/files/{fileId}" data-replace-params="fileId:file-get-file-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/files/my-uploads</span>
+        </h4>
+        <p class="mb-3">Get current user's files</p>
+        <p><strong>Description:</strong> Retrieve all files uploaded by the current user</p>
+        
+        <div class="param-section">
+            <h5>Query Parameters (optional)</h5>
+            <div class="param-input">
+                <label for="file-get-user-files-query">Query Parameters:</label>
+                <input type="text" id="file-get-user-files-query" class="form-control" placeholder="limit=10&offset=0">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="GET" data-endpoint="/api/files/my-uploads" data-custom-query-string="file-get-user-files-query">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/files/search</span>
+        </h4>
+        <p class="mb-3">Search for files</p>
+        <p><strong>Description:</strong> Search for files by filename, type, or other criteria</p>
+        
+        <div class="param-section">
+            <h5>Query Parameters</h5>
+            <div class="param-input">
+                <label for="file-search-query">Search Query:</label>
+                <input type="text" id="file-search-query" class="form-control" placeholder="query=document&type=pdf&limit=10">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="GET" data-endpoint="/api/files/search" data-custom-query-string="file-search-query">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/channels/{channelId}/files</span>
+        </h4>
+        <p class="mb-3">Get channel files</p>
+        <p><strong>Description:</strong> Retrieve all files shared in a specific channel</p>
+        
+        <div class="param-section">
+            <h5>Path Parameters</h5>
+            <div class="param-input">
+                <label for="file-get-channel-id">channelId:</label>
+                <input type="text" id="file-get-channel-id" class="form-control" placeholder="Channel ID">
+            </div>
+            
+            <h5>Query Parameters (optional)</h5>
+            <div class="param-input">
+                <label for="file-get-channel-files-query">Query Parameters:</label>
+                <input type="text" id="file-get-channel-files-query" class="form-control" placeholder="limit=10&offset=0">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="GET" data-endpoint="/api/channels/{channelId}/files" data-replace-params="channelId:file-get-channel-id" data-custom-query-string="file-get-channel-files-query">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method patch">PATCH</span>
+            <span class="endpoint-url">/api/files/{fileId}</span>
+        </h4>
+        <p class="mb-3">Update file details</p>
+        <p><strong>Description:</strong> Update metadata for a specific file</p>
+        
+        <div class="param-section">
+            <h5>Path Parameters</h5>
+            <div class="param-input">
+                <label for="file-update-file-id">fileId:</label>
+                <input type="text" id="file-update-file-id" class="form-control" placeholder="File ID">
+            </div>
+            
+            <h5>Request Body</h5>
+            <div class="param-input">
+                <label for="file-update-body">Request Body:</label>
+                <textarea id="file-update-body" class="form-control" rows="4" placeholder='{"filename": "renamed-document.pdf", "description": "Updated description"}'></textarea>
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="PATCH" data-endpoint="/api/files/{fileId}" data-replace-params="fileId:file-update-file-id" data-has-body="true" data-body-fields="body:file-update-body">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method delete">DELETE</span>
+            <span class="endpoint-url">/api/files/{fileId}</span>
+        </h4>
+        <p class="mb-3">Delete a file</p>
+        <p><strong>Description:</strong> Delete a specific file (user must be the owner)</p>
+        
+        <div class="param-section">
+            <h5>Path Parameters</h5>
+            <div class="param-input">
+                <label for="file-delete-file-id">fileId:</label>
+                <input type="text" id="file-delete-file-id" class="form-control" placeholder="File ID">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="DELETE" data-endpoint="/api/files/{fileId}" data-replace-params="fileId:file-delete-file-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+</div> 

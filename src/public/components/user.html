@@ -1,0 +1,323 @@
+<!-- User Endpoints -->
+<div id="user-component">
+    <h2 class="category-header">User Endpoints</h2>
+    
+    <!-- GET /api/users -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/users</span>
+        </h4>
+        <p>Get a list of users in the current user's workspace</p>
+        <div class="param-input">
+            <label>Query Parameters:</label>
+            <div class="row mb-2">
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="user-get-page" placeholder="page (default: 1)">
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="user-get-limit" placeholder="limit (default: 20)">
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="user-get-search" placeholder="search">
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="user-get-workspace-id" placeholder="workspaceId">
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/users" data-query-params="page:user-get-page,limit:user-get-limit,search:user-get-search,workspaceId:user-get-workspace-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- GET /api/users/me -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/users/me</span>
+        </h4>
+        <p>Get details of the currently logged-in user</p>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/users/me">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- GET /api/users/{userId} -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/users/{userId}</span>
+        </h4>
+        <p>Get details of a specific user</p>
+        <div class="param-input">
+            <label>userId:</label>
+            <input type="text" class="form-control" id="user-get-user-id" placeholder="Enter user ID">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/users/{userId}" data-replace-params="userId:user-get-user-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- PATCH /api/users/me -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method patch">PATCH</span>
+            <span class="endpoint-url">/api/users/me</span>
+        </h4>
+        <p>Update the currently logged-in user's profile</p>
+        <div class="param-input">
+            <label>Request Body:</label>
+            <textarea class="form-control" rows="4" id="user-patch-me-body" placeholder='{"display_name": "New Name", "avatar_url": "https://example.com/avatar.jpg", "username": "New Username"}'></textarea>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="PATCH" data-endpoint="/api/users/me" data-has-body="true" data-body-fields="body:user-patch-me-body">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- PUT /api/users/me/status -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method put">PUT</span>
+            <span class="endpoint-url">/api/users/me/status</span>
+        </h4>
+        <p>Update the currently logged-in user's status</p>
+        <div class="param-input">
+            <label>Request Body:</label>
+            <textarea class="form-control" rows="3" id="user-put-status-body" placeholder='Enter status text directly OR use JSON format: {"statusText": "In a meeting", "expiresAt": "2023-06-30T15:00:00Z"}'></textarea>
+            <small class="form-text text-muted">You can either enter plain text for status OR a JSON object with statusText and optional expiresAt fields.</small>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="PUT" data-endpoint="/api/users/me/status" data-has-body="true" data-body-fields="body:user-put-status-body">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- DELETE /api/users/{userId} -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method delete">DELETE</span>
+            <span class="endpoint-url">/api/users/{userId}</span>
+        </h4>
+        <p>Delete a user (Admin only)</p>
+        <div class="param-input">
+            <label>userId:</label>
+            <input type="text" class="form-control" id="user-delete-user-id" placeholder="Enter user ID">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="DELETE" data-endpoint="/api/users/{userId}" data-replace-params="userId:user-delete-user-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- GET /api/users/me/preferences -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/users/me/preferences</span>
+        </h4>
+        <p>Get the current user's notification preferences</p>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/users/me/preferences">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- PATCH /api/users/me/preferences -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method patch">PATCH</span>
+            <span class="endpoint-url">/api/users/me/preferences</span>
+        </h4>
+        <p>Update the current user's notification preferences</p>
+        <div class="param-input">
+            <label>Request Body:</label>
+            <textarea class="form-control" rows="5" id="user-preferences-body" placeholder='{"notifyOnDirectMessage": true, "notifyOnChannelMessage": true, "notifyOnMention": true, "soundEnabled": true, "desktopNotificationsEnabled": true}'></textarea>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="PATCH" data-endpoint="/api/users/me/preferences" data-has-body="true" data-body-fields="body:user-preferences-body">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- GET /api/users/me/direct-messages -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/users/me/direct-messages</span>
+        </h4>
+        <p>Get direct messages for the current user</p>
+        <div class="param-input">
+            <label>Query Parameters:</label>
+            <div class="row mb-2">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="user-direct-messages-page" placeholder="page (default: 1)">
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="user-direct-messages-limit" placeholder="limit (default: 20)">
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/users/me/direct-messages" data-query-params="page:user-direct-messages-page,limit:user-direct-messages-limit">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- GET /api/users/me/avatar -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/users/me/avatar</span>
+        </h4>
+        <p>Get the current user's AI avatar details</p>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/users/me/avatar">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- POST /api/users/me/avatar -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method post">POST</span>
+            <span class="endpoint-url">/api/users/me/avatar</span>
+        </h4>
+        <p>Create an AI avatar for the current user</p>
+        <div class="param-input">
+            <label>Request Body:</label>
+            <textarea class="form-control" rows="6" id="user-avatar-post-body" placeholder='{"readyPlayerMeUrl": "https://example.com/avatar.glb", "voiceId": "voice-id", "videoStyleId": "style-id", "autonomyLevel": 3, "dataRetentionPolicy": 30, "appearanceCustomization": "{...}", "usesGestures": true, "voiceEnabled": true, "videoEnabled": true}'></textarea>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-endpoint="/api/users/me/avatar" data-has-body="true" data-body-fields="body:user-avatar-post-body">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- PATCH /api/users/me/avatar -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method patch">PATCH</span>
+            <span class="endpoint-url">/api/users/me/avatar</span>
+        </h4>
+        <p>Update the current user's AI avatar settings</p>
+        <div class="param-input">
+            <label>Request Body:</label>
+            <textarea class="form-control" rows="6" id="user-avatar-patch-body" placeholder='{"readyPlayerMeUrl": "https://example.com/avatar.glb", "voiceId": "voice-id", "videoStyleId": "style-id", "autonomyLevel": 3, "dataRetentionPolicy": 30, "appearanceCustomization": "{...}", "usesGestures": true, "voiceEnabled": true, "videoEnabled": true}'></textarea>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="PATCH" data-endpoint="/api/users/me/avatar" data-has-body="true" data-body-fields="body:user-avatar-patch-body">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- GET /api/users/me/avatar/history -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/users/me/avatar/history</span>
+        </h4>
+        <p>Get the communication history for the current user's AI avatar</p>
+        <div class="param-input">
+            <label>Query Parameters:</label>
+            <div class="row mb-2">
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="avatar-history-page" placeholder="page (default: 1)">
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="avatar-history-limit" placeholder="limit (default: 20)">
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="avatar-history-channel-id" placeholder="channelId (optional)">
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/users/me/avatar/history" data-query-params="page:avatar-history-page,limit:avatar-history-limit,channelId:avatar-history-channel-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- POST /api/ai/feedback -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method post">POST</span>
+            <span class="endpoint-url">/api/ai/feedback</span>
+        </h4>
+        <p>Provide feedback on an AI avatar interaction</p>
+        <div class="param-input">
+            <label>Request Body:</label>
+            <textarea class="form-control" rows="3" id="ai-feedback-body" placeholder='{"communicationId": "uuid", "feedback": "This response was helpful"}'></textarea>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-endpoint="/api/ai/feedback" data-has-body="true" data-body-fields="body:ai-feedback-body">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- POST /api/ai/send-message -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method post">POST</span>
+            <span class="endpoint-url">/api/ai/send-message</span>
+        </h4>
+        <p>Send a message using the AI avatar</p>
+        <div class="param-input">
+            <label>Request Body:</label>
+            <textarea class="form-control" rows="4" id="ai-send-message-body" placeholder='{"prompt": "Respond to this question about the project status", "channelId": "uuid", "recipientId": "uuid"}'></textarea>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-endpoint="/api/ai/send-message" data-has-body="true" data-body-fields="body:ai-send-message-body">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+</div> 

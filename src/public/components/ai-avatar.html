@@ -1,0 +1,278 @@
+<div id="ai-avatar-component">
+    <h2 class="mb-4">AI Avatar Endpoints</h2>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/users/me/avatar</span>
+        </h4>
+        <p class="mb-3">Get AI avatar details</p>
+        <p><strong>Description:</strong> Get the current user's AI avatar details</p>
+        
+        <button class="btn btn-primary test-endpoint" data-method="GET" data-endpoint="/api/users/me/avatar">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method post">POST</span>
+            <span class="endpoint-url">/api/users/me/avatar</span>
+        </h4>
+        <p class="mb-3">Create an AI avatar</p>
+        <p><strong>Description:</strong> Create an AI avatar for the current user</p>
+        
+        <div class="param-section">
+            <h5>Request Body</h5>
+            <div class="param-input">
+                <label for="avatar-post-ready-player-me-url">readyPlayerMeUrl:</label>
+                <input type="text" id="avatar-post-ready-player-me-url" class="form-control" placeholder="Ready Player Me URL">
+            </div>
+            <div class="param-input">
+                <label for="avatar-post-voice-id">voiceId:</label>
+                <input type="text" id="avatar-post-voice-id" class="form-control" placeholder="Voice ID">
+            </div>
+            <div class="param-input">
+                <label for="avatar-post-video-style-id">videoStyleId:</label>
+                <input type="text" id="avatar-post-video-style-id" class="form-control" placeholder="Video Style ID">
+            </div>
+            <div class="param-input">
+                <label for="avatar-post-autonomy-level">autonomyLevel:</label>
+                <select id="avatar-post-autonomy-level" class="form-control">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <div class="param-input">
+                <label for="avatar-post-data-retention">dataRetentionPolicy:</label>
+                <select id="avatar-post-data-retention" class="form-control">
+                    <option value="1-day">1 Day</option>
+                    <option value="1-week">1 Week</option>
+                    <option value="1-month">1 Month</option>
+                    <option value="3-months">3 Months</option>
+                    <option value="6-months">6 Months</option>
+                    <option value="1-year">1 Year</option>
+                    <option value="forever">Forever</option>
+                </select>
+            </div>
+            <div class="param-input">
+                <label for="avatar-post-appearance">appearanceCustomization:</label>
+                <textarea id="avatar-post-appearance" class="form-control" placeholder="{...} (JSON object with appearance customization)"></textarea>
+            </div>
+            <div class="param-input">
+                <label for="avatar-post-gestures">usesGestures:</label>
+                <select id="avatar-post-gestures" class="form-control">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+            <div class="param-input">
+                <label for="avatar-post-voice-enabled">voiceEnabled:</label>
+                <select id="avatar-post-voice-enabled" class="form-control">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+            <div class="param-input">
+                <label for="avatar-post-video-enabled">videoEnabled:</label>
+                <select id="avatar-post-video-enabled" class="form-control">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="POST" data-endpoint="/api/users/me/avatar" data-has-body="true" data-body-fields="readyPlayerMeUrl:avatar-post-ready-player-me-url,voiceId:avatar-post-voice-id,videoStyleId:avatar-post-video-style-id,autonomyLevel:avatar-post-autonomy-level,dataRetentionPolicy:avatar-post-data-retention,appearanceCustomization:avatar-post-appearance,usesGestures:avatar-post-gestures,voiceEnabled:avatar-post-voice-enabled,videoEnabled:avatar-post-video-enabled">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method patch">PATCH</span>
+            <span class="endpoint-url">/api/users/me/avatar</span>
+        </h4>
+        <p class="mb-3">Update AI avatar</p>
+        <p><strong>Description:</strong> Update the current user's AI avatar settings</p>
+        
+        <div class="param-section">
+            <h5>Request Body</h5>
+            <div class="param-input">
+                <label for="avatar-patch-ready-player-me-url">readyPlayerMeUrl (optional):</label>
+                <input type="text" id="avatar-patch-ready-player-me-url" class="form-control" placeholder="Ready Player Me URL">
+            </div>
+            <div class="param-input">
+                <label for="avatar-patch-voice-id">voiceId (optional):</label>
+                <input type="text" id="avatar-patch-voice-id" class="form-control" placeholder="Voice ID">
+            </div>
+            <div class="param-input">
+                <label for="avatar-patch-video-style-id">videoStyleId (optional):</label>
+                <input type="text" id="avatar-patch-video-style-id" class="form-control" placeholder="Video Style ID">
+            </div>
+            <div class="param-input">
+                <label for="avatar-patch-autonomy-level">autonomyLevel (optional):</label>
+                <select id="avatar-patch-autonomy-level" class="form-control">
+                    <option value="">No change</option>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <div class="param-input">
+                <label for="avatar-patch-data-retention">dataRetentionPolicy (optional):</label>
+                <select id="avatar-patch-data-retention" class="form-control">
+                    <option value="">No change</option>
+                    <option value="1-day">1 Day</option>
+                    <option value="1-week">1 Week</option>
+                    <option value="1-month">1 Month</option>
+                    <option value="3-months">3 Months</option>
+                    <option value="6-months">6 Months</option>
+                    <option value="1-year">1 Year</option>
+                    <option value="forever">Forever</option>
+                </select>
+            </div>
+            <div class="param-input">
+                <label for="avatar-patch-appearance">appearanceCustomization (optional):</label>
+                <textarea id="avatar-patch-appearance" class="form-control" placeholder="{...} (JSON object with appearance customization)"></textarea>
+            </div>
+            <div class="param-input">
+                <label for="avatar-patch-gestures">usesGestures (optional):</label>
+                <select id="avatar-patch-gestures" class="form-control">
+                    <option value="">No change</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+            <div class="param-input">
+                <label for="avatar-patch-voice-enabled">voiceEnabled (optional):</label>
+                <select id="avatar-patch-voice-enabled" class="form-control">
+                    <option value="">No change</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+            <div class="param-input">
+                <label for="avatar-patch-video-enabled">videoEnabled (optional):</label>
+                <select id="avatar-patch-video-enabled" class="form-control">
+                    <option value="">No change</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="PATCH" data-endpoint="/api/users/me/avatar" data-has-body="true" data-body-fields="readyPlayerMeUrl:avatar-patch-ready-player-me-url,voiceId:avatar-patch-voice-id,videoStyleId:avatar-patch-video-style-id,autonomyLevel:avatar-patch-autonomy-level,dataRetentionPolicy:avatar-patch-data-retention,appearanceCustomization:avatar-patch-appearance,usesGestures:avatar-patch-gestures,voiceEnabled:avatar-patch-voice-enabled,videoEnabled:avatar-patch-video-enabled">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method post">POST</span>
+            <span class="endpoint-url">/api/ai/send-message</span>
+        </h4>
+        <p class="mb-3">Send AI avatar message</p>
+        <p><strong>Description:</strong> Send a message using the AI avatar</p>
+        
+        <div class="param-section">
+            <h5>Request Body</h5>
+            <div class="param-input">
+                <label for="avatar-send-prompt">prompt:</label>
+                <textarea id="avatar-send-prompt" class="form-control" placeholder="Message prompt"></textarea>
+            </div>
+            <div class="param-input">
+                <label for="avatar-send-channel-id">channelId (for channel message, optional if recipientId is provided):</label>
+                <input type="text" id="avatar-send-channel-id" class="form-control" placeholder="Channel ID">
+            </div>
+            <div class="param-input">
+                <label for="avatar-send-recipient-id">recipientId (for direct message, optional if channelId is provided):</label>
+                <input type="text" id="avatar-send-recipient-id" class="form-control" placeholder="Recipient User ID">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="POST" data-endpoint="/api/ai/send-message" data-has-body="true" data-body-fields="prompt:avatar-send-prompt,channelId:avatar-send-channel-id,recipientId:avatar-send-recipient-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/users/me/avatar/history</span>
+        </h4>
+        <p class="mb-3">Get AI communication history</p>
+        <p><strong>Description:</strong> Get the communication history for the current user's AI avatar</p>
+        
+        <div class="param-section">
+            <h5>Query Parameters</h5>
+            <div class="param-input">
+                <label for="avatar-history-page">page:</label>
+                <input type="number" id="avatar-history-page" class="form-control" placeholder="Page number (optional)">
+            </div>
+            <div class="param-input">
+                <label for="avatar-history-limit">limit:</label>
+                <input type="number" id="avatar-history-limit" class="form-control" placeholder="Items per page (optional)">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="GET" data-endpoint="/api/users/me/avatar/history" data-query-params="page:avatar-history-page,limit:avatar-history-limit">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method post">POST</span>
+            <span class="endpoint-url">/api/ai/feedback</span>
+        </h4>
+        <p class="mb-3">Provide AI feedback</p>
+        <p><strong>Description:</strong> Provide feedback on an AI avatar interaction</p>
+        
+        <div class="param-section">
+            <h5>Request Body</h5>
+            <div class="param-input">
+                <label for="avatar-feedback-communication-id">communicationId:</label>
+                <input type="text" id="avatar-feedback-communication-id" class="form-control" placeholder="Communication ID">
+            </div>
+            <div class="param-input">
+                <label for="avatar-feedback">feedback:</label>
+                <textarea id="avatar-feedback" class="form-control" placeholder="Feedback content"></textarea>
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="POST" data-endpoint="/api/ai/feedback" data-has-body="true" data-body-fields="communicationId:avatar-feedback-communication-id,feedback:avatar-feedback">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+</div> 

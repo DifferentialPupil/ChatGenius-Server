@@ -1,0 +1,131 @@
+<div id="reaction-component">
+    <h2 class="mb-4">Reaction Endpoints</h2>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method post">POST</span>
+            <span class="endpoint-url">/api/messages/{messageId}/reactions</span>
+        </h4>
+        <p class="mb-3">Add a reaction to a channel message</p>
+        <p><strong>Description:</strong> Add an emoji reaction to a message in a channel</p>
+        
+        <div class="param-section">
+            <h5>Path Parameters</h5>
+            <div class="param-input">
+                <label for="reaction-post-message-id">messageId:</label>
+                <input type="text" id="reaction-post-message-id" class="form-control" placeholder="Message ID">
+            </div>
+        </div>
+        
+        <div class="param-section">
+            <h5>Request Body</h5>
+            <div class="param-input">
+                <label for="reaction-post-emoji">emoji:</label>
+                <input type="text" id="reaction-post-emoji" class="form-control" placeholder="Emoji (e.g., 👍, 🔥, etc.)">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="POST" data-endpoint="/api/messages/{messageId}/reactions" data-replace-params="messageId:reaction-post-message-id" data-has-body="true" data-body-fields="emoji:reaction-post-emoji">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method delete">DELETE</span>
+            <span class="endpoint-url">/api/messages/{messageId}/reactions/{reactionId}</span>
+        </h4>
+        <p class="mb-3">Remove a reaction from a channel message</p>
+        <p><strong>Description:</strong> Remove a specific reaction from a message in a channel</p>
+        
+        <div class="param-section">
+            <h5>Path Parameters</h5>
+            <div class="param-input">
+                <label for="reaction-delete-message-id">messageId:</label>
+                <input type="text" id="reaction-delete-message-id" class="form-control" placeholder="Message ID">
+            </div>
+            <div class="param-input">
+                <label for="reaction-delete-reaction-id">reactionId:</label>
+                <input type="text" id="reaction-delete-reaction-id" class="form-control" placeholder="Reaction ID">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="DELETE" data-endpoint="/api/messages/{messageId}/reactions/{reactionId}" data-replace-params="messageId:reaction-delete-message-id,reactionId:reaction-delete-reaction-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method post">POST</span>
+            <span class="endpoint-url">/api/direct-messages/{directMessageId}/reactions</span>
+        </h4>
+        <p class="mb-3">Add a reaction to a direct message</p>
+        <p><strong>Description:</strong> Add an emoji reaction to a direct message</p>
+        
+        <div class="param-section">
+            <h5>Path Parameters</h5>
+            <div class="param-input">
+                <label for="reaction-post-dm-id">directMessageId:</label>
+                <input type="text" id="reaction-post-dm-id" class="form-control" placeholder="Direct Message ID">
+            </div>
+        </div>
+        
+        <div class="param-section">
+            <h5>Request Body</h5>
+            <div class="param-input">
+                <label for="reaction-post-dm-emoji">emoji:</label>
+                <input type="text" id="reaction-post-dm-emoji" class="form-control" placeholder="Emoji (e.g., 👍, 🔥, etc.)">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="POST" data-endpoint="/api/direct-messages/{directMessageId}/reactions" data-replace-params="directMessageId:reaction-post-dm-id" data-has-body="true" data-body-fields="emoji:reaction-post-dm-emoji">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method delete">DELETE</span>
+            <span class="endpoint-url">/api/direct-messages/{directMessageId}/reactions/{reactionId}</span>
+        </h4>
+        <p class="mb-3">Remove a reaction from a direct message</p>
+        <p><strong>Description:</strong> Remove a specific reaction from a direct message</p>
+        
+        <div class="param-section">
+            <h5>Path Parameters</h5>
+            <div class="param-input">
+                <label for="reaction-delete-dm-id">directMessageId:</label>
+                <input type="text" id="reaction-delete-dm-id" class="form-control" placeholder="Direct Message ID">
+            </div>
+            <div class="param-input">
+                <label for="reaction-delete-dm-reaction-id">reactionId:</label>
+                <input type="text" id="reaction-delete-dm-reaction-id" class="form-control" placeholder="Reaction ID">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="DELETE" data-endpoint="/api/direct-messages/{directMessageId}/reactions/{reactionId}" data-replace-params="directMessageId:reaction-delete-dm-id,reactionId:reaction-delete-dm-reaction-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+</div> 

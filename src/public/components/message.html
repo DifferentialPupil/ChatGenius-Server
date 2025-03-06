@@ -1,0 +1,212 @@
+<!-- Message Endpoints -->
+<div id="message-component">
+    <h2 class="category-header">Message Endpoints</h2>
+    
+    <!-- GET /api/messages/{messageId} -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/messages/{messageId}</span>
+        </h4>
+        <p>Get details of a specific message</p>
+        <div class="param-input">
+            <label>messageId:</label>
+            <input type="text" class="form-control" id="message-get-id" placeholder="Enter message ID">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/messages/{messageId}" data-replace-params="messageId:message-get-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- GET /api/channels/{channelId}/messages -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/channels/{channelId}/messages</span>
+        </h4>
+        <p>Get messages for a specific channel</p>
+        <div class="param-input">
+            <label>channelId:</label>
+            <input type="text" class="form-control" id="message-get-channel-id" placeholder="Enter channel ID">
+        </div>
+        <div class="param-input">
+            <label>Optional Query Parameters:</label>
+            <input type="text" class="form-control" id="message-get-channel-query" placeholder="limit=20&before=messageId">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/channels/{channelId}/messages" data-replace-params="channelId:message-get-channel-id" data-custom-query-string="message-get-channel-query">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- POST /api/channels/{channelId}/messages -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method post">POST</span>
+            <span class="endpoint-url">/api/channels/{channelId}/messages</span>
+        </h4>
+        <p>Send a new message to a channel</p>
+        <div class="param-input">
+            <label>channelId:</label>
+            <input type="text" class="form-control" id="message-post-channel-id" placeholder="Enter channel ID">
+        </div>
+        <div class="param-input">
+            <label>Request Body:</label>
+            <textarea class="form-control" rows="4" id="message-post-body" placeholder='{"content": "Hello, channel!", "attachments": []}'></textarea>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-endpoint="/api/channels/{channelId}/messages" data-replace-params="channelId:message-post-channel-id" data-has-body="true" data-body-fields="body:message-post-body">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- PATCH /api/messages/{messageId} -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method patch">PATCH</span>
+            <span class="endpoint-url">/api/messages/{messageId}</span>
+        </h4>
+        <p>Edit an existing message</p>
+        <div class="param-input">
+            <label>messageId:</label>
+            <input type="text" class="form-control" id="message-patch-id" placeholder="Enter message ID">
+        </div>
+        <div class="param-input">
+            <label>Request Body:</label>
+            <textarea class="form-control" rows="4" id="message-patch-body" placeholder='{"content": "Updated message content"}'></textarea>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="PATCH" data-endpoint="/api/messages/{messageId}" data-replace-params="messageId:message-patch-id" data-has-body="true" data-body-fields="body:message-patch-body">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- DELETE /api/messages/{messageId} -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method delete">DELETE</span>
+            <span class="endpoint-url">/api/messages/{messageId}</span>
+        </h4>
+        <p>Delete a message</p>
+        <div class="param-input">
+            <label>messageId:</label>
+            <input type="text" class="form-control" id="message-delete-id" placeholder="Enter message ID">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="DELETE" data-endpoint="/api/messages/{messageId}" data-replace-params="messageId:message-delete-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- POST /api/messages/{messageId}/threads -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method post">POST</span>
+            <span class="endpoint-url">/api/messages/{messageId}/threads</span>
+        </h4>
+        <p>Create a new thread reply to a message</p>
+        <div class="param-input">
+            <label>messageId:</label>
+            <input type="text" class="form-control" id="thread-create-message-id" placeholder="Enter message ID">
+        </div>
+        <div class="param-input">
+            <label>Request Body:</label>
+            <textarea class="form-control" rows="4" id="thread-create-body" placeholder='{"content": "This is a thread reply"}'></textarea>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-endpoint="/api/messages/{messageId}/threads" data-replace-params="messageId:thread-create-message-id" data-has-body="true" data-body-fields="body:thread-create-body">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- GET /api/messages/{messageId}/threads -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/messages/{messageId}/threads</span>
+        </h4>
+        <p>Get all replies in a thread</p>
+        <div class="param-input">
+            <label>messageId:</label>
+            <input type="text" class="form-control" id="thread-get-message-id" placeholder="Enter message ID">
+        </div>
+        <div class="param-input">
+            <label>Optional Query Parameters:</label>
+            <input type="text" class="form-control" id="thread-get-query" placeholder="limit=20&before=messageId">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-endpoint="/api/messages/{messageId}/threads" data-replace-params="messageId:thread-get-message-id" data-custom-query-string="thread-get-query">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- POST /api/messages/{messageId}/reactions -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method post">POST</span>
+            <span class="endpoint-url">/api/messages/{messageId}/reactions</span>
+        </h4>
+        <p>Add a reaction to a message</p>
+        <div class="param-input">
+            <label>messageId:</label>
+            <input type="text" class="form-control" id="reaction-add-message-id" placeholder="Enter message ID">
+        </div>
+        <div class="param-input">
+            <label>Request Body:</label>
+            <textarea class="form-control" rows="2" id="reaction-add-body" placeholder='{"emoji": "👍"}'></textarea>
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-endpoint="/api/messages/{messageId}/reactions" data-replace-params="messageId:reaction-add-message-id" data-has-body="true" data-body-fields="body:reaction-add-body">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <!-- DELETE /api/messages/{messageId}/reactions/{reactionId} -->
+    <div class="endpoint">
+        <h4>
+            <span class="http-method delete">DELETE</span>
+            <span class="endpoint-url">/api/messages/{messageId}/reactions/{reactionId}</span>
+        </h4>
+        <p>Remove a reaction from a message</p>
+        <div class="param-input">
+            <label>messageId:</label>
+            <input type="text" class="form-control" id="reaction-remove-message-id" placeholder="Enter message ID">
+        </div>
+        <div class="param-input">
+            <label>reactionId:</label>
+            <input type="text" class="form-control" id="reaction-remove-id" placeholder="Enter reaction ID">
+        </div>
+        <button class="btn btn-sm btn-primary test-endpoint" data-method="DELETE" data-endpoint="/api/messages/{messageId}/reactions/{reactionId}" data-replace-params="messageId:reaction-remove-message-id,reactionId:reaction-remove-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+        </button>
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+</div> 

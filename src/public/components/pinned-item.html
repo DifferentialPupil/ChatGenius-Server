@@ -1,0 +1,97 @@
+<div id="pinned-item-component">
+    <h2 class="mb-4">Pinned Item Endpoints</h2>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method post">POST</span>
+            <span class="endpoint-url">/api/channels/{channelId}/pins</span>
+        </h4>
+        <p class="mb-3">Pin an item to a channel</p>
+        <p><strong>Description:</strong> Pin a message or file to a channel</p>
+        
+        <div class="param-section">
+            <h5>Path Parameters</h5>
+            <div class="param-input">
+                <label for="pin-post-channel-id">channelId:</label>
+                <input type="text" id="pin-post-channel-id" class="form-control" placeholder="Channel ID">
+            </div>
+        </div>
+        
+        <div class="param-section">
+            <h5>Request Body</h5>
+            <div class="param-input">
+                <label for="pin-post-message-id">messageId (Optional if fileId is provided):</label>
+                <input type="text" id="pin-post-message-id" class="form-control" placeholder="Message ID (optional)">
+            </div>
+            <div class="param-input">
+                <label for="pin-post-file-id">fileId (Optional if messageId is provided):</label>
+                <input type="text" id="pin-post-file-id" class="form-control" placeholder="File ID (optional)">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="POST" data-endpoint="/api/channels/{channelId}/pins" data-replace-params="channelId:pin-post-channel-id" data-has-body="true" data-body-fields="messageId:pin-post-message-id,fileId:pin-post-file-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method delete">DELETE</span>
+            <span class="endpoint-url">/api/channels/{channelId}/pins/{pinnedItemId}</span>
+        </h4>
+        <p class="mb-3">Unpin an item from a channel</p>
+        <p><strong>Description:</strong> Remove a pinned item from a channel</p>
+        
+        <div class="param-section">
+            <h5>Path Parameters</h5>
+            <div class="param-input">
+                <label for="pin-delete-channel-id">channelId:</label>
+                <input type="text" id="pin-delete-channel-id" class="form-control" placeholder="Channel ID">
+            </div>
+            <div class="param-input">
+                <label for="pin-delete-pinned-item-id">pinnedItemId:</label>
+                <input type="text" id="pin-delete-pinned-item-id" class="form-control" placeholder="Pinned Item ID">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="DELETE" data-endpoint="/api/channels/{channelId}/pins/{pinnedItemId}" data-replace-params="channelId:pin-delete-channel-id,pinnedItemId:pin-delete-pinned-item-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/channels/{channelId}/pins</span>
+        </h4>
+        <p class="mb-3">Get pinned items in a channel</p>
+        <p><strong>Description:</strong> Get a list of all pinned items in a channel</p>
+        
+        <div class="param-section">
+            <h5>Path Parameters</h5>
+            <div class="param-input">
+                <label for="pin-get-channel-id">channelId:</label>
+                <input type="text" id="pin-get-channel-id" class="form-control" placeholder="Channel ID">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="GET" data-endpoint="/api/channels/{channelId}/pins" data-replace-params="channelId:pin-get-channel-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+</div> 

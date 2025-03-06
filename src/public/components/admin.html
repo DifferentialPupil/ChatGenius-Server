@@ -1,0 +1,218 @@
+<div id="admin-component">
+    <h2 class="mb-4">Admin Endpoints</h2>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/admin/workspaces/{workspaceId}/users</span>
+        </h4>
+        <p class="mb-3">Get all users in a workspace (Admin)</p>
+        <p><strong>Description:</strong> Admin endpoint to get a list of all users in a workspace</p>
+        
+        <div class="param-section">
+            <h5>Path Parameters</h5>
+            <div class="param-input">
+                <label for="admin-get-workspace-users-id">workspaceId:</label>
+                <input type="text" id="admin-get-workspace-users-id" class="form-control" placeholder="Workspace ID">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="GET" data-endpoint="/api/admin/workspaces/{workspaceId}/users" data-replace-params="workspaceId:admin-get-workspace-users-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method delete">DELETE</span>
+            <span class="endpoint-url">/api/admin/workspaces/{workspaceId}/users/{userId}</span>
+        </h4>
+        <p class="mb-3">Remove a user from a workspace (Admin)</p>
+        <p><strong>Description:</strong> Admin endpoint to remove a user from a workspace</p>
+        
+        <div class="param-section">
+            <h5>Path Parameters</h5>
+            <div class="param-input">
+                <label for="admin-delete-workspace-user-workspace-id">workspaceId:</label>
+                <input type="text" id="admin-delete-workspace-user-workspace-id" class="form-control" placeholder="Workspace ID">
+            </div>
+            <div class="param-input">
+                <label for="admin-delete-workspace-user-user-id">userId:</label>
+                <input type="text" id="admin-delete-workspace-user-user-id" class="form-control" placeholder="User ID">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="DELETE" data-endpoint="/api/admin/workspaces/{workspaceId}/users/{userId}" data-replace-params="workspaceId:admin-delete-workspace-user-workspace-id,userId:admin-delete-workspace-user-user-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/admin/channels</span>
+        </h4>
+        <p class="mb-3">Get all channels (Admin)</p>
+        <p><strong>Description:</strong> Admin endpoint to get a list of all channels in a workspace</p>
+        
+        <div class="param-section">
+            <h5>Query Parameters</h5>
+            <div class="param-input">
+                <label for="admin-get-channels-workspace-id">workspaceId:</label>
+                <input type="text" id="admin-get-channels-workspace-id" class="form-control" placeholder="Workspace ID">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="GET" data-endpoint="/api/admin/channels" data-query-params="workspaceId:admin-get-channels-workspace-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method delete">DELETE</span>
+            <span class="endpoint-url">/api/admin/channels/{channelId}</span>
+        </h4>
+        <p class="mb-3">Delete a channel (Admin)</p>
+        <p><strong>Description:</strong> Admin endpoint to delete a channel</p>
+        
+        <div class="param-section">
+            <h5>Path Parameters</h5>
+            <div class="param-input">
+                <label for="admin-delete-channel-id">channelId:</label>
+                <input type="text" id="admin-delete-channel-id" class="form-control" placeholder="Channel ID">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="DELETE" data-endpoint="/api/admin/channels/{channelId}" data-replace-params="channelId:admin-delete-channel-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/admin/messages/inappropriate</span>
+        </h4>
+        <p class="mb-3">Get flagged inappropriate messages (Admin)</p>
+        <p><strong>Description:</strong> Admin endpoint to get a list of flagged inappropriate messages and files</p>
+        
+        <div class="param-section">
+            <h5>Query Parameters</h5>
+            <div class="param-input">
+                <label for="admin-get-inappropriate-workspace-id">workspaceId:</label>
+                <input type="text" id="admin-get-inappropriate-workspace-id" class="form-control" placeholder="Workspace ID">
+            </div>
+            <div class="param-input">
+                <label for="admin-get-inappropriate-page">page:</label>
+                <input type="number" id="admin-get-inappropriate-page" class="form-control" placeholder="Page number (optional)">
+            </div>
+            <div class="param-input">
+                <label for="admin-get-inappropriate-limit">limit:</label>
+                <input type="number" id="admin-get-inappropriate-limit" class="form-control" placeholder="Items per page (optional)">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="GET" data-endpoint="/api/admin/messages/inappropriate" data-query-params="workspaceId:admin-get-inappropriate-workspace-id,page:admin-get-inappropriate-page,limit:admin-get-inappropriate-limit">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/admin/ai/performance</span>
+        </h4>
+        <p class="mb-3">Get AI avatar analytics (Admin)</p>
+        <p><strong>Description:</strong> Admin endpoint to get analytics on AI avatar performance</p>
+        
+        <div class="param-section">
+            <h5>Query Parameters</h5>
+            <div class="param-input">
+                <label for="admin-get-ai-performance-workspace-id">workspaceId:</label>
+                <input type="text" id="admin-get-ai-performance-workspace-id" class="form-control" placeholder="Workspace ID">
+            </div>
+            <div class="param-input">
+                <label for="admin-get-ai-performance-period">period:</label>
+                <select id="admin-get-ai-performance-period" class="form-control">
+                    <option value="day">Day</option>
+                    <option value="week">Week</option>
+                    <option value="month">Month</option>
+                    <option value="year">Year</option>
+                </select>
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="GET" data-endpoint="/api/admin/ai/performance" data-query-params="workspaceId:admin-get-ai-performance-workspace-id,period:admin-get-ai-performance-period">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method patch">PATCH</span>
+            <span class="endpoint-url">/api/admin/ai/global-settings</span>
+        </h4>
+        <p class="mb-3">Configure global AI settings (Admin)</p>
+        <p><strong>Description:</strong> Admin endpoint to configure global AI avatar behavior settings</p>
+        
+        <div class="param-section">
+            <h5>Query Parameters</h5>
+            <div class="param-input">
+                <label for="admin-patch-ai-settings-workspace-id">workspaceId:</label>
+                <input type="text" id="admin-patch-ai-settings-workspace-id" class="form-control" placeholder="Workspace ID">
+            </div>
+        </div>
+        
+        <div class="param-section">
+            <h5>Request Body</h5>
+            <div class="param-input">
+                <label for="admin-patch-ai-settings-autonomy">aiGlobalAutonomyLevel:</label>
+                <select id="admin-patch-ai-settings-autonomy" class="form-control">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="PATCH" data-endpoint="/api/admin/ai/global-settings" data-query-params="workspaceId:admin-patch-ai-settings-workspace-id" data-has-body="true" data-body-fields="aiGlobalAutonomyLevel:admin-patch-ai-settings-autonomy">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+</div> 

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGenius API Documentation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/github.min.css">
+    <style>
+        body {
+            padding-top: 20px;
+            padding-bottom: 50px;
+        }
+        .endpoint {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+        }
+        .endpoint-url {
+            font-family: monospace;
+            font-weight: bold;
+        }
+        .http-method {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            color: white;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .get { background-color: #28a745; }
+        .post { background-color: #007bff; }
+        .put { background-color: #fd7e14; }
+        .patch { background-color: #6f42c1; }
+        .delete { background-color: #dc3545; }
+        .param-input {
+            margin-bottom: 10px;
+        }
+        .response-area {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            overflow: auto;
+            max-height: 300px;
+            display: none;
+        }
+        .nav-link {
+            cursor: pointer;
+        }
+        .category-header {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        .spinner-icon {
+            margin-left: 10px;
+        }
+        #console-output {
+            position: fixed;
+            bottom: 60px;
+            right: 20px;
+            width: 300px;
+            max-height: 200px;
+            overflow-y: auto;
+            background-color: #343a40;
+            color: #fff;
+            border-radius: 5px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 1000;
+            display: none;
+        }
+        .console-entry {
+            margin-bottom: 5px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #495057;
+        }
+        .console-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1001;
+        }
+        .set-auth-token {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1001;
+        }
+        #loading-indicator {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            z-index: 1002;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="mb-5">
+            <h1 class="text-center">ChatGenius API Documentation</h1>
+            <p class="text-center lead">Interactive documentation for testing API endpoints</p>
+        </header>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="sticky-top pt-3">
+                    <h4>Categories</h4>
+                    <nav class="nav flex-column">
+                        <a class="nav-link active" data-bs-toggle="pill" href="#user">User</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#workspace">Workspace</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#workspace-member">Workspace Member</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#channel">Channel</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#channel-member">Channel Member</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#message">Message</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#direct-message">Direct Message</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#file">File</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#reaction">Reaction</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#thread">Thread</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#mention">Mention</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#pinned-item">Pinned Item</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#notification">Notification</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#ai-avatar">AI Avatar</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#admin">Admin</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#subscription-plan">Subscription Plan</a>
+                    </nav>
+                </div>
+            </div>
+            
+            <div class="col-md-9">
+                <div id="component-container" class="tab-content">
+                    <!-- Components will be loaded here dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add console output area -->
+    <div id="console-output"></div>
+    <button class="btn btn-sm btn-secondary console-toggle">Toggle Console</button>
+    <button class="btn btn-sm btn-success set-auth-token">Set Auth Token</button>
+    
+    <!-- Loading indicator -->
+    <div id="loading-indicator">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Loading...
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/highlight.min.js"></script>
+    <script src="/components/app.js"></script>
+</body>
+</html> 

@@ -1,0 +1,245 @@
+<div id="notification-component">
+    <h2 class="mb-4">Notification Endpoints</h2>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/notifications</span>
+        </h4>
+        <p class="mb-3">Get user notifications</p>
+        <p><strong>Description:</strong> Get a list of the current user's notifications</p>
+        
+        <div class="param-section">
+            <h5>Query Parameters</h5>
+            <div class="param-input">
+                <label for="notification-get-unread">unread:</label>
+                <select id="notification-get-unread" class="form-control">
+                    <option value="">All notifications</option>
+                    <option value="true">Unread only</option>
+                    <option value="false">Read only</option>
+                </select>
+            </div>
+            <div class="param-input">
+                <label for="notification-get-page">page:</label>
+                <input type="number" id="notification-get-page" class="form-control" placeholder="Page number (defaults to 1)">
+            </div>
+            <div class="param-input">
+                <label for="notification-get-limit">limit:</label>
+                <input type="number" id="notification-get-limit" class="form-control" placeholder="Items per page (defaults to 20)">
+            </div>
+            <div class="param-input">
+                <label for="notification-get-type">type:</label>
+                <select id="notification-get-type" class="form-control">
+                    <option value="">All types</option>
+                    <option value="direct_message">Direct Messages</option>
+                    <option value="channel_message">Channel Messages</option>
+                    <option value="mention">Mentions</option>
+                    <option value="system">System Notifications</option>
+                </select>
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="GET" data-endpoint="/api/notifications" data-query-params="unread:notification-get-unread,page:notification-get-page,limit:notification-get-limit,type:notification-get-type">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/notifications/count</span>
+        </h4>
+        <p class="mb-3">Get unread notification count</p>
+        <p><strong>Description:</strong> Get the count of unread notifications for the current user</p>
+        
+        <div class="param-section">
+            <h5>Query Parameters (Optional)</h5>
+            <div class="param-input">
+                <label for="notification-count-type">type:</label>
+                <select id="notification-count-type" class="form-control">
+                    <option value="">All types</option>
+                    <option value="direct_message">Direct Messages</option>
+                    <option value="channel_message">Channel Messages</option>
+                    <option value="mention">Mentions</option>
+                    <option value="system">System Notifications</option>
+                </select>
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="GET" data-endpoint="/api/notifications/count" data-query-params="type:notification-count-type">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method patch">PATCH</span>
+            <span class="endpoint-url">/api/notifications/{notificationId}/read</span>
+        </h4>
+        <p class="mb-3">Mark a notification as read</p>
+        <p><strong>Description:</strong> Mark a specific notification as read</p>
+        
+        <div class="param-section">
+            <h5>Path Parameters</h5>
+            <div class="param-input">
+                <label for="notification-patch-notification-id">notificationId:</label>
+                <input type="text" id="notification-patch-notification-id" class="form-control" placeholder="Notification ID">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="PATCH" data-endpoint="/api/notifications/{notificationId}/read" data-replace-params="notificationId:notification-patch-notification-id">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method patch">PATCH</span>
+            <span class="endpoint-url">/api/notifications/read-all</span>
+        </h4>
+        <p class="mb-3">Mark all notifications as read</p>
+        <p><strong>Description:</strong> Mark all notifications for the current user as read</p>
+        
+        <div class="param-section">
+            <h5>Query Parameters (Optional)</h5>
+            <div class="param-input">
+                <label for="notification-read-all-type">type:</label>
+                <select id="notification-read-all-type" class="form-control">
+                    <option value="">All types</option>
+                    <option value="direct_message">Direct Messages</option>
+                    <option value="channel_message">Channel Messages</option>
+                    <option value="mention">Mentions</option>
+                    <option value="system">System Notifications</option>
+                </select>
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="PATCH" data-endpoint="/api/notifications/read-all" data-query-params="type:notification-read-all-type">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method get">GET</span>
+            <span class="endpoint-url">/api/users/me/notification-preferences</span>
+        </h4>
+        <p class="mb-3">Get notification preferences</p>
+        <p><strong>Description:</strong> Get the current user's notification preferences</p>
+        
+        <button class="btn btn-primary test-endpoint" data-method="GET" data-endpoint="/api/users/me/notification-preferences">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h4>
+            <span class="http-method patch">PATCH</span>
+            <span class="endpoint-url">/api/users/me/notification-preferences</span>
+        </h4>
+        <p class="mb-3">Update notification preferences</p>
+        <p><strong>Description:</strong> Update the current user's notification preferences</p>
+        
+        <div class="param-section">
+            <h5>Request Body</h5>
+            <div class="param-input">
+                <label for="notification-patch-direct-message">notifyOnDirectMessage:</label>
+                <select id="notification-patch-direct-message" class="form-control">
+                    <option value="">No change</option>
+                    <option value="true">Enable</option>
+                    <option value="false">Disable</option>
+                </select>
+            </div>
+            <div class="param-input">
+                <label for="notification-patch-channel-message">notifyOnChannelMessage:</label>
+                <select id="notification-patch-channel-message" class="form-control">
+                    <option value="">No change</option>
+                    <option value="true">Enable</option>
+                    <option value="false">Disable</option>
+                </select>
+            </div>
+            <div class="param-input">
+                <label for="notification-patch-mention">notifyOnMention:</label>
+                <select id="notification-patch-mention" class="form-control">
+                    <option value="">No change</option>
+                    <option value="true">Enable</option>
+                    <option value="false">Disable</option>
+                </select>
+            </div>
+            <div class="param-input">
+                <label for="notification-patch-sound">soundEnabled:</label>
+                <select id="notification-patch-sound" class="form-control">
+                    <option value="">No change</option>
+                    <option value="true">Enable</option>
+                    <option value="false">Disable</option>
+                </select>
+            </div>
+            <div class="param-input">
+                <label for="notification-patch-desktop">desktopNotificationsEnabled:</label>
+                <select id="notification-patch-desktop" class="form-control">
+                    <option value="">No change</option>
+                    <option value="true">Enable</option>
+                    <option value="false">Disable</option>
+                </select>
+            </div>
+            <div class="param-input">
+                <label for="notification-patch-mobile">mobileNotificationsEnabled:</label>
+                <select id="notification-patch-mobile" class="form-control">
+                    <option value="">No change</option>
+                    <option value="true">Enable</option>
+                    <option value="false">Disable</option>
+                </select>
+            </div>
+            <div class="param-input">
+                <label for="notification-patch-quiet-hours">quietHoursEnabled:</label>
+                <select id="notification-patch-quiet-hours" class="form-control">
+                    <option value="">No change</option>
+                    <option value="true">Enable</option>
+                    <option value="false">Disable</option>
+                </select>
+            </div>
+            <div class="param-input">
+                <label for="notification-patch-quiet-start">quietHoursStart:</label>
+                <input type="time" id="notification-patch-quiet-start" class="form-control" placeholder="HH:MM (24-hour format)">
+            </div>
+            <div class="param-input">
+                <label for="notification-patch-quiet-end">quietHoursEnd:</label>
+                <input type="time" id="notification-patch-quiet-end" class="form-control" placeholder="HH:MM (24-hour format)">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary test-endpoint" data-method="PATCH" data-endpoint="/api/users/me/notification-preferences" data-has-body="true" data-body-fields="notifyOnDirectMessage:notification-patch-direct-message,notifyOnChannelMessage:notification-patch-channel-message,notifyOnMention:notification-patch-mention,soundEnabled:notification-patch-sound,desktopNotificationsEnabled:notification-patch-desktop,mobileNotificationsEnabled:notification-patch-mobile,quietHoursEnabled:notification-patch-quiet-hours,quietHoursStart:notification-patch-quiet-start,quietHoursEnd:notification-patch-quiet-end">
+            Test Endpoint
+            <span class="spinner-border spinner-border-sm spinner-icon" role="status" aria-hidden="true" style="display:none"></span>
+        </button>
+        
+        <div class="response-area">
+            <pre><code class="json"></code></pre>
+        </div>
+    </div>
+</div> 

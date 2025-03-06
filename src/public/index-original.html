@@ -1,0 +1,2398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGenius API Documentation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/github.min.css">
+    <style>
+        body {
+            padding-top: 20px;
+            padding-bottom: 50px;
+        }
+        .endpoint {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+        }
+        .endpoint-url {
+            font-family: monospace;
+            font-weight: bold;
+        }
+        .http-method {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            color: white;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .get { background-color: #28a745; }
+        .post { background-color: #007bff; }
+        .put { background-color: #fd7e14; }
+        .patch { background-color: #6f42c1; }
+        .delete { background-color: #dc3545; }
+        .param-input {
+            margin-bottom: 10px;
+        }
+        .response-area {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            overflow: auto;
+            max-height: 300px;
+            display: none;
+        }
+        .nav-link {
+            cursor: pointer;
+        }
+        .category-header {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        .spinner-icon {
+            margin-left: 10px;
+        }
+        #console-output {
+            position: fixed;
+            bottom: 60px;
+            right: 20px;
+            width: 300px;
+            max-height: 200px;
+            overflow-y: auto;
+            background-color: #343a40;
+            color: #fff;
+            border-radius: 5px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 1000;
+            display: none;
+        }
+        .console-entry {
+            margin-bottom: 5px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #495057;
+        }
+        .console-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="mb-5">
+            <h1 class="text-center">ChatGenius API Documentation</h1>
+            <p class="text-center lead">Interactive documentation for testing API endpoints</p>
+        </header>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="sticky-top pt-3">
+                    <h4>Categories</h4>
+                    <nav class="nav flex-column">
+                        <a class="nav-link active" data-bs-toggle="pill" href="#user">User</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#workspace">Workspace</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#channel">Channel</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#channel-member">Channel Member</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#message">Message</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#direct-message">Direct Message</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#file">File</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#reaction">Reaction</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#thread">Thread</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#mention">Mention</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#pinned-item">Pinned Item</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#notification">Notification</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#ai-avatar">AI Avatar</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#admin">Admin</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#subscription-plan">Subscription Plan</a>
+                    </nav>
+                </div>
+            </div>
+            
+            <div class="col-md-9">
+                <div class="tab-content">
+                    <!-- User Endpoints -->
+                    <div class="tab-pane fade show active" id="user">
+                        <h2 class="category-header">User Endpoints</h2>
+                        
+                        <!-- GET /api/users -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/users</span>
+                            </h4>
+                            <p>Get a list of users in the current user's workspace</p>
+                            <div class="param-input">
+                                <label>Query Parameters:</label>
+                                <div class="row mb-2">
+                                    <div class="col-md-3">
+                                        <input type="text" class="form-control" name="page" placeholder="page (default: 1)">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" class="form-control" name="limit" placeholder="limit (default: 20)">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" class="form-control" name="search" placeholder="search">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" class="form-control" name="workspaceId" placeholder="workspaceId">
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/api/users">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/users/me -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/users/me</span>
+                            </h4>
+                            <p>Get details of the currently logged-in user</p>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/api/users/me">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/users/{userId} -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/users/{userId}</span>
+                            </h4>
+                            <p>Get details of a specific user</p>
+                            <div class="param-input">
+                                <label>userId:</label>
+                                <input type="text" class="form-control" name="userId" placeholder="Enter user ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/api/users/{userId}">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- PATCH /api/users/me -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method patch">PATCH</span>
+                                <span class="endpoint-url">/api/users/me</span>
+                            </h4>
+                            <p>Update the currently logged-in user's profile</p>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="4" name="body" placeholder='{"displayName": "New Name", "avatarUrl": "https://example.com/avatar.jpg", "status": "Available"}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="PATCH" data-url="/api/users/me">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- PUT /api/users/me/status -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method put">PUT</span>
+                                <span class="endpoint-url">/api/users/me/status</span>
+                            </h4>
+                            <p>Update the currently logged-in user's status</p>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="3" name="body" placeholder='{"statusText": "In a meeting", "expiresAt": "2023-06-30T15:00:00Z"}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="PUT" data-url="/api/users/me/status">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- DELETE /api/users/{userId} -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method delete">DELETE</span>
+                                <span class="endpoint-url">/api/users/{userId}</span>
+                            </h4>
+                            <p>Delete a user (Admin only)</p>
+                            <div class="param-input">
+                                <label>userId:</label>
+                                <input type="text" class="form-control" name="userId" placeholder="Enter user ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="DELETE" data-url="/api/users/{userId}">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/users/me/preferences -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/users/me/preferences</span>
+                            </h4>
+                            <p>Get the current user's notification preferences</p>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/api/users/me/preferences">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- PATCH /api/users/me/preferences -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method patch">PATCH</span>
+                                <span class="endpoint-url">/api/users/me/preferences</span>
+                            </h4>
+                            <p>Update the current user's notification preferences</p>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="5" name="body" placeholder='{"notifyOnDirectMessage": true, "notifyOnChannelMessage": true, "notifyOnMention": true, "soundEnabled": true, "desktopNotificationsEnabled": true}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="PATCH" data-url="/api/users/me/preferences">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/users/{userId}/direct-messages -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/users/{userId}/direct-messages</span>
+                            </h4>
+                            <p>Get direct messages with a specific user</p>
+                            <div class="param-input">
+                                <label>userId:</label>
+                                <input type="text" class="form-control" name="userId" placeholder="Enter user ID">
+                                <label class="mt-2">Query Parameters:</label>
+                                <div class="row mb-2">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="page" placeholder="page (default: 1)">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="limit" placeholder="limit (default: 20)">
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/api/users/{userId}/direct-messages">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/users/me/avatar -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/users/me/avatar</span>
+                            </h4>
+                            <p>Get the current user's AI avatar details</p>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/api/users/me/avatar">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- POST /api/users/me/avatar -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method post">POST</span>
+                                <span class="endpoint-url">/api/users/me/avatar</span>
+                            </h4>
+                            <p>Create an AI avatar for the current user</p>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="6" name="body" placeholder='{"readyPlayerMeUrl": "https://example.com/avatar.glb", "voiceId": "voice-id", "videoStyleId": "style-id", "autonomyLevel": 3, "dataRetentionPolicy": 30, "appearanceCustomization": "{...}", "usesGestures": true, "voiceEnabled": true, "videoEnabled": true}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-url="/api/users/me/avatar">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- PATCH /api/users/me/avatar -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method patch">PATCH</span>
+                                <span class="endpoint-url">/api/users/me/avatar</span>
+                            </h4>
+                            <p>Update the current user's AI avatar settings</p>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="6" name="body" placeholder='{"readyPlayerMeUrl": "https://example.com/avatar.glb", "voiceId": "voice-id", "videoStyleId": "style-id", "autonomyLevel": 3, "dataRetentionPolicy": 30, "appearanceCustomization": "{...}", "usesGestures": true, "voiceEnabled": true, "videoEnabled": true}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="PATCH" data-url="/api/users/me/avatar">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/users/me/avatar/history -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/users/me/avatar/history</span>
+                            </h4>
+                            <p>Get the communication history for the current user's AI avatar</p>
+                            <div class="param-input">
+                                <label>Query Parameters:</label>
+                                <div class="row mb-2">
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" name="page" placeholder="page (default: 1)">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" name="limit" placeholder="limit (default: 20)">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" name="channelId" placeholder="channelId (optional)">
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/api/users/me/avatar/history">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- POST /api/ai/feedback -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method post">POST</span>
+                                <span class="endpoint-url">/api/ai/feedback</span>
+                            </h4>
+                            <p>Provide feedback on an AI avatar interaction</p>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="3" name="body" placeholder='{"communicationId": "uuid", "feedback": "This response was helpful"}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-url="/api/ai/feedback">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- POST /api/ai/send-message -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method post">POST</span>
+                                <span class="endpoint-url">/api/ai/send-message</span>
+                            </h4>
+                            <p>Send a message using the AI avatar</p>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="4" name="body" placeholder='{"prompt": "Respond to this question about the project status", "channelId": "uuid", "recipientId": "uuid"}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-url="/api/ai/send-message">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Workspace Endpoints -->
+                    <div class="tab-pane fade" id="workspace">
+                        <h2 class="category-header">Workspace Endpoints</h2>
+                        
+                        <!-- GET /api/workspaces -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/workspaces</span>
+                            </h4>
+                            <p>Get a list of all workspaces the user is a member of</p>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/workspaces">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/workspaces/{workspaceId} -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/workspaces/{workspaceId}</span>
+                            </h4>
+                            <p>Get details of a specific workspace</p>
+                            <div class="param-input">
+                                <label>workspaceId:</label>
+                                <input type="text" class="form-control" name="workspaceId" placeholder="Enter workspace ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/workspaces/{workspaceId}">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- POST /api/workspaces -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method post">POST</span>
+                                <span class="endpoint-url">/api/workspaces</span>
+                            </h4>
+                            <p>Create a new workspace</p>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="4" name="body" placeholder='{"name": "New Workspace", "logoUrl": "https://example.com/logo.png"}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-url="/workspaces">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Channel Endpoints -->
+                    <div class="tab-pane fade" id="channel">
+                        <h2 class="category-header">Channel Endpoints</h2>
+                        
+                        <!-- GET /api/workspaces/{workspaceId}/channels -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/workspaces/{workspaceId}/channels</span>
+                            </h4>
+                            <p>Get a list of channels in a workspace</p>
+                            <div class="param-input">
+                                <label>workspaceId:</label>
+                                <input type="text" class="form-control" name="workspaceId" placeholder="Enter workspace ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/workspaces/{workspaceId}/channels">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/channels/{channelId} -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/channels/{channelId}</span>
+                            </h4>
+                            <p>Get details of a specific channel</p>
+                            <div class="param-input">
+                                <label>channelId:</label>
+                                <input type="text" class="form-control" name="channelId" placeholder="Enter channel ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/channels/{channelId}">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- POST /api/workspaces/{workspaceId}/channels -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method post">POST</span>
+                                <span class="endpoint-url">/api/workspaces/{workspaceId}/channels</span>
+                            </h4>
+                            <p>Create a new channel</p>
+                            <div class="param-input">
+                                <label>workspaceId:</label>
+                                <input type="text" class="form-control" name="workspaceId" placeholder="Enter workspace ID">
+                            </div>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="4" name="body" placeholder='{"name": "new-channel", "description": "A new channel", "isPublic": true, "topic": "Channel topic"}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-url="/workspaces/{workspaceId}/channels">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- PATCH /api/channels/{channelId} -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method patch">PATCH</span>
+                                <span class="endpoint-url">/api/channels/{channelId}</span>
+                            </h4>
+                            <p>Update a channel's details</p>
+                            <div class="param-input">
+                                <label>channelId:</label>
+                                <input type="text" class="form-control" name="channelId" placeholder="Enter channel ID">
+                            </div>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="4" name="body" placeholder='{"name": "updated-channel", "description": "Updated description", "isPublic": true, "topic": "Updated topic"}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="PATCH" data-url="/channels/{channelId}">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- DELETE /api/channels/{channelId} -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method delete">DELETE</span>
+                                <span class="endpoint-url">/api/channels/{channelId}</span>
+                            </h4>
+                            <p>Delete a channel</p>
+                            <div class="param-input">
+                                <label>channelId:</label>
+                                <input type="text" class="form-control" name="channelId" placeholder="Enter channel ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="DELETE" data-url="/channels/{channelId}">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/users/me/channels -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/users/me/channels</span>
+                            </h4>
+                            <p>Get a list of channels the current user is a member of</p>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/users/me/channels">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Channel Member Endpoints -->
+                    <div class="tab-pane fade" id="channel-member">
+                        <h2 class="category-header">Channel Member Endpoints</h2>
+                        
+                        <!-- POST /api/channels/{channelId}/join -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method post">POST</span>
+                                <span class="endpoint-url">/api/channels/{channelId}/join</span>
+                            </h4>
+                            <p>Join a public channel</p>
+                            <div class="param-input">
+                                <label>channelId:</label>
+                                <input type="text" class="form-control" name="channelId" placeholder="Enter channel ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-url="/channels/{channelId}/join">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- DELETE /api/channels/{channelId}/leave -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method delete">DELETE</span>
+                                <span class="endpoint-url">/api/channels/{channelId}/leave</span>
+                            </h4>
+                            <p>Leave a channel</p>
+                            <div class="param-input">
+                                <label>channelId:</label>
+                                <input type="text" class="form-control" name="channelId" placeholder="Enter channel ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="DELETE" data-url="/channels/{channelId}/leave">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/channels/{channelId}/members -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/channels/{channelId}/members</span>
+                            </h4>
+                            <p>Get a list of members in a channel</p>
+                            <div class="param-input">
+                                <label>channelId:</label>
+                                <input type="text" class="form-control" name="channelId" placeholder="Enter channel ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/channels/{channelId}/members">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- POST /api/channels/{channelId}/members -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method post">POST</span>
+                                <span class="endpoint-url">/api/channels/{channelId}/members</span>
+                            </h4>
+                            <p>Add members to a channel</p>
+                            <div class="param-input">
+                                <label>channelId:</label>
+                                <input type="text" class="form-control" name="channelId" placeholder="Enter channel ID">
+                            </div>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="4" name="body" placeholder='{"userIds": ["user-id-1", "user-id-2"]}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-url="/channels/{channelId}/members">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- DELETE /api/channels/{channelId}/members/{userId} -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method delete">DELETE</span>
+                                <span class="endpoint-url">/api/channels/{channelId}/members/{userId}</span>
+                            </h4>
+                            <p>Remove a member from a channel</p>
+                            <div class="param-input">
+                                <label>channelId:</label>
+                                <input type="text" class="form-control" name="channelId" placeholder="Enter channel ID">
+                            </div>
+                            <div class="param-input">
+                                <label>userId:</label>
+                                <input type="text" class="form-control" name="userId" placeholder="Enter user ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="DELETE" data-url="/channels/{channelId}/members/{userId}">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Message Endpoints -->
+                    <div class="tab-pane fade" id="message">
+                        <h2 class="category-header">Message Endpoints</h2>
+                        
+                        <!-- GET /api/channels/{channelId}/messages -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/channels/{channelId}/messages</span>
+                            </h4>
+                            <p>Get messages for a specific channel</p>
+                            <div class="param-input">
+                                <label>channelId:</label>
+                                <input type="text" class="form-control" name="channelId" placeholder="Enter channel ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/channels/{channelId}/messages">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- POST /api/channels/{channelId}/messages -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method post">POST</span>
+                                <span class="endpoint-url">/api/channels/{channelId}/messages</span>
+                            </h4>
+                            <p>Send a new message to a channel</p>
+                            <div class="param-input">
+                                <label>channelId:</label>
+                                <input type="text" class="form-control" name="channelId" placeholder="Enter channel ID">
+                            </div>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="4" name="body" placeholder='{"content": "Hello, channel!"}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-url="/channels/{channelId}/messages">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direct Message Endpoints -->
+                    <div class="tab-pane fade" id="direct-message">
+                        <h2 class="category-header">Direct Message Endpoints</h2>
+                        
+                        <!-- GET /api/direct-messages/{directMessageId} -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/direct-messages/{directMessageId}</span>
+                            </h4>
+                            <p>Get details of a specific direct message</p>
+                            <div class="param-input">
+                                <label>directMessageId:</label>
+                                <input type="text" class="form-control" name="directMessageId" placeholder="Enter direct message ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/direct-messages/{directMessageId}">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- POST /api/direct-messages/{recipientId} -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method post">POST</span>
+                                <span class="endpoint-url">/api/direct-messages/{recipientId}</span>
+                            </h4>
+                            <p>Send a new direct message to a user</p>
+                            <div class="param-input">
+                                <label>recipientId:</label>
+                                <input type="text" class="form-control" name="recipientId" placeholder="Enter recipient ID">
+                            </div>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="4" name="body" placeholder='{"content": "Hello, this is a direct message"}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-url="/direct-messages/{recipientId}">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/users/me/direct-messages -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/users/me/direct-messages</span>
+                            </h4>
+                            <p>Get a list of the current user's direct message conversations</p>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/users/me/direct-messages">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/direct-messages/conversations/{userId} -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/direct-messages/conversations/{userId}</span>
+                            </h4>
+                            <p>Get messages in a direct message conversation with a specific user</p>
+                            <div class="param-input">
+                                <label>userId:</label>
+                                <input type="text" class="form-control" name="userId" placeholder="Enter user ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/direct-messages/conversations/{userId}">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- File Endpoints -->
+                    <div class="tab-pane fade" id="file">
+                        <h2 class="category-header">File Endpoints</h2>
+                        
+                        <!-- POST /api/files/upload -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method post">POST</span>
+                                <span class="endpoint-url">/api/files/upload</span>
+                            </h4>
+                            <p>Upload a file</p>
+                            <div class="alert alert-info">
+                                <strong>Note:</strong> This endpoint requires a form-data (multipart) request with a file upload.
+                                Testing through this interface is limited. Try using Postman for a complete test with file uploads.
+                            </div>
+                            <div class="param-input">
+                                <label>Sample Request Body (for reference, not usable here):</label>
+                                <textarea class="form-control" rows="4" name="body" placeholder='// This would be FormData with a file field
+FormData {
+  "file": File,
+  "channelId": "optional-channel-id" // If associated with a channel
+}' disabled></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-url="/files/upload" disabled>
+                                Test Endpoint (Disabled - Use Postman)
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json">// Example response:
+{
+  "fileId": "example-file-id",
+  "fileUrl": "https://example.com/files/example.pdf",
+  "filename": "example.pdf",
+  "mimeType": "application/pdf",
+  "size": 1024,
+  "uploadedBy": "user-id",
+  "createdAt": "2023-06-15T10:30:00Z"
+}</code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/files/{fileId} -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/files/{fileId}</span>
+                            </h4>
+                            <p>Get file metadata</p>
+                            <div class="param-input">
+                                <label>fileId:</label>
+                                <input type="text" class="form-control" name="fileId" placeholder="Enter file ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/files/{fileId}">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/files/{fileId}/download -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/files/{fileId}/download</span>
+                            </h4>
+                            <p>Download a file</p>
+                            <div class="param-input">
+                                <label>fileId:</label>
+                                <input type="text" class="form-control" name="fileId" placeholder="Enter file ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/files/{fileId}/download">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json">// This endpoint returns the file itself, not JSON.</code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- DELETE /api/files/{fileId} -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method delete">DELETE</span>
+                                <span class="endpoint-url">/api/files/{fileId}</span>
+                            </h4>
+                            <p>Delete a file</p>
+                            <div class="param-input">
+                                <label>fileId:</label>
+                                <input type="text" class="form-control" name="fileId" placeholder="Enter file ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="DELETE" data-url="/files/{fileId}">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/channels/{channelId}/files -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/channels/{channelId}/files</span>
+                            </h4>
+                            <p>Get files shared in a channel</p>
+                            <div class="param-input">
+                                <label>channelId:</label>
+                                <input type="text" class="form-control" name="channelId" placeholder="Enter channel ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/channels/{channelId}/files">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Reaction Endpoints -->
+                    <div class="tab-pane fade" id="reaction">
+                        <h2 class="category-header">Reaction Endpoints</h2>
+                        
+                        <!-- POST /api/messages/{messageId}/reactions -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method post">POST</span>
+                                <span class="endpoint-url">/api/messages/{messageId}/reactions</span>
+                            </h4>
+                            <p>Add a reaction to a channel message</p>
+                            <div class="param-input">
+                                <label>messageId:</label>
+                                <input type="text" class="form-control" name="messageId" placeholder="Enter message ID">
+                            </div>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="4" name="body" placeholder='{"emoji": "👍"}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-url="/messages/{messageId}/reactions">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- DELETE /api/messages/{messageId}/reactions/{reactionId} -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method delete">DELETE</span>
+                                <span class="endpoint-url">/api/messages/{messageId}/reactions/{reactionId}</span>
+                            </h4>
+                            <p>Remove a reaction from a channel message</p>
+                            <div class="param-input">
+                                <label>messageId:</label>
+                                <input type="text" class="form-control" name="messageId" placeholder="Enter message ID">
+                            </div>
+                            <div class="param-input">
+                                <label>reactionId:</label>
+                                <input type="text" class="form-control" name="reactionId" placeholder="Enter reaction ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="DELETE" data-url="/messages/{messageId}/reactions/{reactionId}">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- POST /api/direct-messages/{directMessageId}/reactions -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method post">POST</span>
+                                <span class="endpoint-url">/api/direct-messages/{directMessageId}/reactions</span>
+                            </h4>
+                            <p>Add a reaction to a direct message</p>
+                            <div class="param-input">
+                                <label>directMessageId:</label>
+                                <input type="text" class="form-control" name="directMessageId" placeholder="Enter direct message ID">
+                            </div>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="4" name="body" placeholder='{"emoji": "❤️"}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-url="/direct-messages/{directMessageId}/reactions">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- DELETE /api/direct-messages/{directMessageId}/reactions/{reactionId} -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method delete">DELETE</span>
+                                <span class="endpoint-url">/api/direct-messages/{directMessageId}/reactions/{reactionId}</span>
+                            </h4>
+                            <p>Remove a reaction from a direct message</p>
+                            <div class="param-input">
+                                <label>directMessageId:</label>
+                                <input type="text" class="form-control" name="directMessageId" placeholder="Enter direct message ID">
+                            </div>
+                            <div class="param-input">
+                                <label>reactionId:</label>
+                                <input type="text" class="form-control" name="reactionId" placeholder="Enter reaction ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="DELETE" data-url="/direct-messages/{directMessageId}/reactions/{reactionId}">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/messages/{messageId}/reactions -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/messages/{messageId}/reactions</span>
+                            </h4>
+                            <p>Get all reactions for a message</p>
+                            <div class="param-input">
+                                <label>messageId:</label>
+                                <input type="text" class="form-control" name="messageId" placeholder="Enter message ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/messages/{messageId}/reactions">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Thread Endpoints -->
+                    <div class="tab-pane fade" id="thread">
+                        <h2 class="category-header">Thread Endpoints</h2>
+                        
+                        <!-- POST /api/messages/{messageId}/threads -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method post">POST</span>
+                                <span class="endpoint-url">/api/messages/{messageId}/threads</span>
+                            </h4>
+                            <p>Create a new thread reply to a message</p>
+                            <div class="param-input">
+                                <label>messageId:</label>
+                                <input type="text" class="form-control" name="messageId" placeholder="Enter parent message ID">
+                            </div>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="4" name="body" placeholder='{"content": "This is a thread reply"}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-url="/messages/{messageId}/threads">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/messages/{messageId}/threads -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/messages/{messageId}/threads</span>
+                            </h4>
+                            <p>Get all replies in a thread</p>
+                            <div class="param-input">
+                                <label>messageId:</label>
+                                <input type="text" class="form-control" name="messageId" placeholder="Enter parent message ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/messages/{messageId}/threads">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- PATCH /api/messages/{messageId}/threads/{threadId} -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method patch">PATCH</span>
+                                <span class="endpoint-url">/api/messages/{messageId}/threads/{threadId}</span>
+                            </h4>
+                            <p>Edit a thread reply</p>
+                            <div class="param-input">
+                                <label>messageId:</label>
+                                <input type="text" class="form-control" name="messageId" placeholder="Enter parent message ID">
+                            </div>
+                            <div class="param-input">
+                                <label>threadId:</label>
+                                <input type="text" class="form-control" name="threadId" placeholder="Enter thread ID">
+                            </div>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="4" name="body" placeholder='{"content": "Updated thread reply"}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="PATCH" data-url="/messages/{messageId}/threads/{threadId}">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- DELETE /api/messages/{messageId}/threads/{threadId} -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method delete">DELETE</span>
+                                <span class="endpoint-url">/api/messages/{messageId}/threads/{threadId}</span>
+                            </h4>
+                            <p>Delete a thread reply</p>
+                            <div class="param-input">
+                                <label>messageId:</label>
+                                <input type="text" class="form-control" name="messageId" placeholder="Enter parent message ID">
+                            </div>
+                            <div class="param-input">
+                                <label>threadId:</label>
+                                <input type="text" class="form-control" name="threadId" placeholder="Enter thread ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="DELETE" data-url="/messages/{messageId}/threads/{threadId}">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mention Endpoints -->
+                    <div class="tab-pane fade" id="mention">
+                        <h2 class="category-header">Mention Endpoints</h2>
+                        
+                        <!-- GET /api/users/me/mentions -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/users/me/mentions</span>
+                            </h4>
+                            <p>Get a list of mentions for the current user</p>
+                            <div class="param-input">
+                                <label>Query Parameters:</label>
+                                <input type="text" class="form-control" name="queryParams" placeholder="?unread=true&limit=20&offset=0">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/users/me/mentions">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- PATCH /api/mentions/{mentionId}/read -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method patch">PATCH</span>
+                                <span class="endpoint-url">/api/mentions/{mentionId}/read</span>
+                            </h4>
+                            <p>Mark a mention as read</p>
+                            <div class="param-input">
+                                <label>mentionId:</label>
+                                <input type="text" class="form-control" name="mentionId" placeholder="Enter mention ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="PATCH" data-url="/mentions/{mentionId}/read">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/messages/{messageId}/mentions -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/messages/{messageId}/mentions</span>
+                            </h4>
+                            <p>Get all mentions in a message</p>
+                            <div class="param-input">
+                                <label>messageId:</label>
+                                <input type="text" class="form-control" name="messageId" placeholder="Enter message ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/messages/{messageId}/mentions">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pinned Item Endpoints -->
+                    <div class="tab-pane fade" id="pinned-item">
+                        <h2 class="category-header">Pinned Item Endpoints</h2>
+                        
+                        <!-- POST /api/channels/{channelId}/pins -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method post">POST</span>
+                                <span class="endpoint-url">/api/channels/{channelId}/pins</span>
+                            </h4>
+                            <p>Pin a message or file to a channel</p>
+                            <div class="param-input">
+                                <label>channelId:</label>
+                                <input type="text" class="form-control" name="channelId" placeholder="Enter channel ID">
+                            </div>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="4" name="body" placeholder='{"messageId": "message-id"} or {"fileId": "file-id"}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-url="/channels/{channelId}/pins">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- DELETE /api/channels/{channelId}/pins/{pinnedItemId} -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method delete">DELETE</span>
+                                <span class="endpoint-url">/api/channels/{channelId}/pins/{pinnedItemId}</span>
+                            </h4>
+                            <p>Unpin an item from a channel</p>
+                            <div class="param-input">
+                                <label>channelId:</label>
+                                <input type="text" class="form-control" name="channelId" placeholder="Enter channel ID">
+                            </div>
+                            <div class="param-input">
+                                <label>pinnedItemId:</label>
+                                <input type="text" class="form-control" name="pinnedItemId" placeholder="Enter pinned item ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="DELETE" data-url="/channels/{channelId}/pins/{pinnedItemId}">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/channels/{channelId}/pins -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/channels/{channelId}/pins</span>
+                            </h4>
+                            <p>Get a list of pinned items in a channel</p>
+                            <div class="param-input">
+                                <label>channelId:</label>
+                                <input type="text" class="form-control" name="channelId" placeholder="Enter channel ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/channels/{channelId}/pins">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/pins/{pinnedItemId} -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/pins/{pinnedItemId}</span>
+                            </h4>
+                            <p>Get details of a specific pinned item</p>
+                            <div class="param-input">
+                                <label>pinnedItemId:</label>
+                                <input type="text" class="form-control" name="pinnedItemId" placeholder="Enter pinned item ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/pins/{pinnedItemId}">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Notification Endpoints -->
+                    <div class="tab-pane fade" id="notification">
+                        <h2 class="category-header">Notification Endpoints</h2>
+                        
+                        <!-- GET /api/notifications -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/notifications</span>
+                            </h4>
+                            <p>Get a list of the current user's notifications</p>
+                            <div class="param-input">
+                                <label>Query Parameters:</label>
+                                <input type="text" class="form-control" name="queryParams" placeholder="?unread=true&limit=20&offset=0">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/notifications">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- PATCH /api/notifications/{notificationId}/read -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method patch">PATCH</span>
+                                <span class="endpoint-url">/api/notifications/{notificationId}/read</span>
+                            </h4>
+                            <p>Mark a notification as read</p>
+                            <div class="param-input">
+                                <label>notificationId:</label>
+                                <input type="text" class="form-control" name="notificationId" placeholder="Enter notification ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="PATCH" data-url="/notifications/{notificationId}/read">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- PATCH /api/notifications/read-all -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method patch">PATCH</span>
+                                <span class="endpoint-url">/api/notifications/read-all</span>
+                            </h4>
+                            <p>Mark all notifications as read</p>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="PATCH" data-url="/notifications/read-all">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/users/me/preferences -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/users/me/preferences</span>
+                            </h4>
+                            <p>Get the current user's notification preferences</p>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/users/me/preferences">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- PATCH /api/users/me/preferences -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method patch">PATCH</span>
+                                <span class="endpoint-url">/api/users/me/preferences</span>
+                            </h4>
+                            <p>Update the current user's notification preferences</p>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="4" name="body" placeholder='{"notifyOnDirectMessage": true, "notifyOnChannelMessage": false, "notifyOnMention": true, "soundEnabled": true, "desktopNotificationsEnabled": true}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="PATCH" data-url="/users/me/preferences">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- AI Avatar Endpoints -->
+                    <div class="tab-pane fade" id="ai-avatar">
+                        <h2 class="category-header">AI Avatar Endpoints</h2>
+                        
+                        <!-- GET /api/users/me/avatar -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/users/me/avatar</span>
+                            </h4>
+                            <p>Get the current user's AI avatar details</p>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/users/me/avatar">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- POST /api/users/me/avatar -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method post">POST</span>
+                                <span class="endpoint-url">/api/users/me/avatar</span>
+                            </h4>
+                            <p>Create an AI avatar for the current user</p>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="4" name="body" placeholder='{"readyPlayerMeUrl": "https://example.com/avatar.jpg", "voiceId": "en-US-1", "videoStyleId": "professional", "autonomyLevel": "medium", "dataRetentionPolicy": "30days", "appearanceCustomization": {"hairColor": "brown"}, "usesGestures": true, "voiceEnabled": true, "videoEnabled": true}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-url="/users/me/avatar">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- PATCH /api/users/me/avatar -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method patch">PATCH</span>
+                                <span class="endpoint-url">/api/users/me/avatar</span>
+                            </h4>
+                            <p>Update the current user's AI avatar settings</p>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="4" name="body" placeholder='{"voiceId": "en-GB-2", "autonomyLevel": "high", "usesGestures": false}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="PATCH" data-url="/users/me/avatar">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- POST /api/ai/send-message -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method post">POST</span>
+                                <span class="endpoint-url">/api/ai/send-message</span>
+                            </h4>
+                            <p>Send a message using the AI avatar</p>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="4" name="body" placeholder='{"prompt": "Schedule a meeting for tomorrow", "channelId": "channel-id", "recipientId": "recipient-id-for-dm"}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-url="/ai/send-message">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/users/me/avatar/history -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/users/me/avatar/history</span>
+                            </h4>
+                            <p>Get the communication history for the current user's AI avatar</p>
+                            <div class="param-input">
+                                <label>Query Parameters:</label>
+                                <input type="text" class="form-control" name="queryParams" placeholder="?limit=20&offset=0">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/users/me/avatar/history">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- POST /api/ai/feedback -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method post">POST</span>
+                                <span class="endpoint-url">/api/ai/feedback</span>
+                            </h4>
+                            <p>Provide feedback on an AI avatar interaction</p>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="4" name="body" placeholder='{"communicationId": "communication-id", "feedback": "Very helpful response, exactly what I needed."}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-url="/ai/feedback">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Admin Endpoints -->
+                    <div class="tab-pane fade" id="admin">
+                        <h2 class="category-header">Admin Endpoints</h2>
+                        
+                        <!-- GET /api/admin/workspaces/{workspaceId}/users -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/admin/workspaces/{workspaceId}/users</span>
+                            </h4>
+                            <p>Get a list of all users in a workspace (Admin)</p>
+                            <div class="param-input">
+                                <label>workspaceId:</label>
+                                <input type="text" class="form-control" name="workspaceId" placeholder="Enter workspace ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/admin/workspaces/{workspaceId}/users">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- DELETE /api/admin/workspaces/{workspaceId}/users/{userId} -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method delete">DELETE</span>
+                                <span class="endpoint-url">/api/admin/workspaces/{workspaceId}/users/{userId}</span>
+                            </h4>
+                            <p>Remove a user from a workspace (Admin)</p>
+                            <div class="param-input">
+                                <label>workspaceId:</label>
+                                <input type="text" class="form-control" name="workspaceId" placeholder="Enter workspace ID">
+                            </div>
+                            <div class="param-input">
+                                <label>userId:</label>
+                                <input type="text" class="form-control" name="userId" placeholder="Enter user ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="DELETE" data-url="/admin/workspaces/{workspaceId}/users/{userId}">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/admin/channels -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/admin/channels</span>
+                            </h4>
+                            <p>Get a list of all channels in a workspace (Admin)</p>
+                            <div class="param-input">
+                                <label>Query Parameters:</label>
+                                <input type="text" class="form-control" name="queryParams" placeholder="?workspaceId=workspace-id">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/admin/channels">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- DELETE /api/admin/channels/{channelId} -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method delete">DELETE</span>
+                                <span class="endpoint-url">/api/admin/channels/{channelId}</span>
+                            </h4>
+                            <p>Delete a channel (Admin)</p>
+                            <div class="param-input">
+                                <label>channelId:</label>
+                                <input type="text" class="form-control" name="channelId" placeholder="Enter channel ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="DELETE" data-url="/admin/channels/{channelId}">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/admin/messages/inappropriate -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/admin/messages/inappropriate</span>
+                            </h4>
+                            <p>Get a list of flagged inappropriate messages and files (Admin)</p>
+                            <div class="param-input">
+                                <label>Query Parameters:</label>
+                                <input type="text" class="form-control" name="queryParams" placeholder="?workspaceId=workspace-id&limit=20&offset=0">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/admin/messages/inappropriate">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/admin/ai/performance -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/admin/ai/performance</span>
+                            </h4>
+                            <p>Get analytics on AI avatar performance (Admin)</p>
+                            <div class="param-input">
+                                <label>Query Parameters:</label>
+                                <input type="text" class="form-control" name="queryParams" placeholder="?workspaceId=workspace-id&period=30days">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/admin/ai/performance">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- PATCH /api/admin/ai/global-settings -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method patch">PATCH</span>
+                                <span class="endpoint-url">/api/admin/ai/global-settings</span>
+                            </h4>
+                            <p>Configure global AI avatar behavior settings (Admin)</p>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="4" name="body" placeholder='{"aiGlobalAutonomyLevel": "medium", "maxResponseLength": 500, "defaultVoiceEnabled": true, "defaultVideoEnabled": false}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="PATCH" data-url="/admin/ai/global-settings">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/admin/workspaces/{workspaceId}/subscription -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/admin/workspaces/{workspaceId}/subscription</span>
+                            </h4>
+                            <p>Get the subscription details for a workspace (Admin)</p>
+                            <div class="param-input">
+                                <label>workspaceId:</label>
+                                <input type="text" class="form-control" name="workspaceId" placeholder="Enter workspace ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/admin/workspaces/{workspaceId}/subscription">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- POST /api/admin/workspaces/{workspaceId}/subscription -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method post">POST</span>
+                                <span class="endpoint-url">/api/admin/workspaces/{workspaceId}/subscription</span>
+                            </h4>
+                            <p>Subscribe a workspace to a plan (Admin)</p>
+                            <div class="param-input">
+                                <label>workspaceId:</label>
+                                <input type="text" class="form-control" name="workspaceId" placeholder="Enter workspace ID">
+                            </div>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="4" name="body" placeholder='{"planId": "premium-plan", "billingInformation": {"paymentMethod": "credit-card", "cardNumber": "••••••••••••4242", "expiryDate": "12/25"}}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-url="/admin/workspaces/{workspaceId}/subscription">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subscription Plan Endpoints -->
+                    <div class="tab-pane fade" id="subscription-plan">
+                        <h2 class="category-header">Subscription Plan Endpoints</h2>
+                        
+                        <!-- GET /api/subscription-plans -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/subscription-plans</span>
+                            </h4>
+                            <p>Get a list of available subscription plans</p>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/subscription-plans">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/subscription-plans/{planId} -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/subscription-plans/{planId}</span>
+                            </h4>
+                            <p>Get details of a specific subscription plan</p>
+                            <div class="param-input">
+                                <label>planId:</label>
+                                <input type="text" class="form-control" name="planId" placeholder="Enter plan ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/subscription-plans/{planId}">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- GET /api/workspaces/{workspaceId}/subscription -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method get">GET</span>
+                                <span class="endpoint-url">/api/workspaces/{workspaceId}/subscription</span>
+                            </h4>
+                            <p>Get the subscription details for a workspace</p>
+                            <div class="param-input">
+                                <label>workspaceId:</label>
+                                <input type="text" class="form-control" name="workspaceId" placeholder="Enter workspace ID">
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="GET" data-url="/workspaces/{workspaceId}/subscription">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- POST /api/workspaces/{workspaceId}/subscription -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method post">POST</span>
+                                <span class="endpoint-url">/api/workspaces/{workspaceId}/subscription</span>
+                            </h4>
+                            <p>Subscribe a workspace to a plan</p>
+                            <div class="param-input">
+                                <label>workspaceId:</label>
+                                <input type="text" class="form-control" name="workspaceId" placeholder="Enter workspace ID">
+                            </div>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="4" name="body" placeholder='{"planId": "premium-plan", "billingInformation": {"paymentMethod": "credit-card", "cardNumber": "••••••••••••4242", "expiryDate": "12/25"}}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="POST" data-url="/workspaces/{workspaceId}/subscription">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- PATCH /api/workspaces/{workspaceId}/subscription -->
+                        <div class="endpoint">
+                            <h4>
+                                <span class="http-method patch">PATCH</span>
+                                <span class="endpoint-url">/api/workspaces/{workspaceId}/subscription</span>
+                            </h4>
+                            <p>Update a workspace's subscription</p>
+                            <div class="param-input">
+                                <label>workspaceId:</label>
+                                <input type="text" class="form-control" name="workspaceId" placeholder="Enter workspace ID">
+                            </div>
+                            <div class="param-input">
+                                <label>Request Body:</label>
+                                <textarea class="form-control" rows="4" name="body" placeholder='{"planId": "enterprise-plan", "billingInformation": {"paymentMethod": "invoice", "billingEmail": "billing@company.com"}}'></textarea>
+                            </div>
+                            <button class="btn btn-sm btn-primary test-endpoint" data-method="PATCH" data-url="/workspaces/{workspaceId}/subscription">
+                                Test Endpoint
+                                <span class="spinner-border spinner-border-sm spinner-icon" style="display: none;"></span>
+                            </button>
+                            <div class="response-area">
+                                <pre><code class="json"></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add console output area -->
+    <div id="console-output"></div>
+    <button class="btn btn-sm btn-secondary console-toggle">Toggle Console</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Console logging function
+            const consoleOutput = document.getElementById('console-output');
+            const logToConsole = (message) => {
+                const entry = document.createElement('div');
+                entry.className = 'console-entry';
+                entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+                consoleOutput.appendChild(entry);
+                consoleOutput.scrollTop = consoleOutput.scrollHeight;
+            };
+            
+            // Check if highlight.js is loaded
+            if (typeof hljs !== 'undefined') {
+                logToConsole('Highlight.js loaded successfully');
+                hljs.highlightAll();
+            } else {
+                logToConsole('Warning: Highlight.js not loaded properly. Syntax highlighting will be disabled.');
+                // Create a fallback for the highlightElement function to prevent errors
+                window.hljs = {
+                    highlightElement: function() {
+                        // Do nothing, just prevent errors
+                    }
+                };
+            }
+            
+            // Toggle console visibility
+            document.querySelector('.console-toggle').addEventListener('click', function() {
+                if (consoleOutput.style.display === 'none' || !consoleOutput.style.display) {
+                    consoleOutput.style.display = 'block';
+                } else {
+                    consoleOutput.style.display = 'none';
+                }
+            });
+            
+            // Handle endpoint testing
+            document.querySelectorAll('.test-endpoint').forEach(button => {
+                button.addEventListener('click', async function() {
+                    const endpoint = this.closest('.endpoint');
+                    const method = this.getAttribute('data-method');
+                    let url = this.getAttribute('data-url');
+                    
+                    // Replace URL parameters
+                    endpoint.querySelectorAll('input[name]').forEach(input => {
+                        url = url.replace(`{${input.name}}`, input.value || '');
+                    });
+                    
+                    logToConsole(`Preparing ${method} request to ${url}`);
+                    
+                    // Check for authentication token
+                    const authToken = localStorage.getItem('access_token');
+                    if (!authToken) {
+                        logToConsole('Warning: No authentication token set');
+                        if (!confirm('No authentication token set. This request might fail. Continue anyway?')) {
+                            return;
+                        }
+                    }
+                    
+                    // Get request body if applicable
+                    const bodyTextarea = endpoint.querySelector('textarea[name="body"]');
+                    let body = null;
+                    if (bodyTextarea && bodyTextarea.value) {
+                        try {
+                            body = JSON.parse(bodyTextarea.value);
+                            logToConsole(`Request body: ${bodyTextarea.value}`);
+                        } catch (e) {
+                            logToConsole(`Error parsing JSON: ${e.message}`);
+                            alert('Invalid JSON in request body!');
+                            return;
+                        }
+                    }
+                    
+                    // Show spinner
+                    const spinner = this.querySelector('.spinner-icon');
+                    spinner.style.display = 'inline-block';
+                    
+                    const responseArea = endpoint.querySelector('.response-area');
+                    const codeElement = responseArea.querySelector('code');
+                    
+                    // Show response area before making request
+                    responseArea.style.display = 'block';
+                    
+                    try {
+                        logToConsole(`Sending ${method} request to ${url}`);
+                        
+                        const response = await fetch(url, {
+                            method: method,
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': authToken ? `Bearer ${authToken}` : ''
+                            },
+                            body: body ? JSON.stringify(body) : undefined,
+                            credentials: 'same-origin' // Include cookies for same-origin requests
+                        });
+                        
+                        logToConsole(`Received response: HTTP ${response.status} ${response.statusText}`);
+                        
+                        // Format the HTTP status
+                        let responseText = `HTTP ${response.status} ${response.statusText}\n\n`;
+                        
+                        // If unauthorized, add a helpful message
+                        if (response.status === 401) {
+                            responseText += "Authentication failed. Please check your token or login status.\n\n";
+                        }
+                        
+                        const contentType = response.headers.get('content-type');
+                        let responseData;
+                        
+                        try {
+                            if (contentType && contentType.includes('application/json')) {
+                                responseData = await response.json();
+                                responseText += JSON.stringify(responseData, null, 2);
+                                logToConsole('Parsed JSON response');
+                            } else {
+                                responseData = await response.text();
+                                responseText += responseData;
+                                logToConsole(`Received text response (${responseData.length} chars)`);
+                            }
+                        } catch (parseError) {
+                            responseText += `Error parsing response: ${parseError.message}`;
+                            logToConsole(`Error parsing response: ${parseError.message}`);
+                        }
+                        
+                        // Display response
+                        codeElement.textContent = responseText;
+                        
+                        // Apply syntax highlighting safely
+                        try {
+                            if (typeof hljs !== 'undefined') {
+                                hljs.highlightElement(codeElement);
+                            }
+                        } catch (highlightError) {
+                            logToConsole(`Warning: Could not apply syntax highlighting: ${highlightError.message}`);
+                        }
+                    } catch (error) {
+                        // Display network-level errors in the response area
+                        let errorMessage = `Error: ${error.message}`;
+                        
+                        // Add helpful messages for common errors
+                        if (error.message.includes('Failed to fetch') || error.message.includes('Network error')) {
+                            errorMessage += "\n\nPossible causes:\n";
+                            errorMessage += "1. The server is not running\n";
+                            errorMessage += "2. CORS policy is blocking the request\n";
+                            errorMessage += "3. The endpoint URL is incorrect\n";
+                            errorMessage += "4. Network connectivity issues";
+                        }
+                        
+                        codeElement.textContent = errorMessage;
+                        logToConsole(`Network error: ${error.message}`);
+                    } finally {
+                        // Hide spinner
+                        spinner.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Simple Auth0 login handling
+            const loginButton = document.createElement('button');
+            loginButton.className = 'btn btn-success position-fixed';
+            loginButton.style.bottom = '20px';
+            loginButton.style.left = '20px';
+            loginButton.textContent = 'Set Auth Token';
+            loginButton.addEventListener('click', function() {
+                const token = prompt('Enter your access token:');
+                if (token) {
+                    localStorage.setItem('access_token', token);
+                    logToConsole('Auth token stored');
+                    alert('Token stored!');
+                }
+            });
+            document.body.appendChild(loginButton);
+            
+            // Log initialization
+            logToConsole('API documentation loaded');
+            
+            // Check for auth token
+            if (localStorage.getItem('access_token')) {
+                logToConsole('Auth token found in local storage');
+            } else {
+                logToConsole('No auth token found. Set one using the "Set Auth Token" button.');
+            }
+        });
+    </script>
+
+    <!-- Socket.IO Events Documentation -->
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h1>Socket.IO Events</h1>
+                        <p class="lead">Documentation for real-time events using Socket.IO</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Event Name</th>
+                                        <th>Direction</th>
+                                        <th>Description</th>
+                                        <th>Payload Example</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Connection Events -->
+                                    <tr>
+                                        <td colspan="4" class="event-category">Connection Events</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>connect</code></td>
+                                        <td>Client ↔ Server</td>
+                                        <td>Fired when a client connects to the server</td>
+                                        <td><pre><code class="json">// No payload</code></pre></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>disconnect</code></td>
+                                        <td>Client ↔ Server</td>
+                                        <td>Fired when a client disconnects from the server</td>
+                                        <td><pre><code class="json">// No payload</code></pre></td>
+                                    </tr>
+                                    
+                                    <!-- User Events -->
+                                    <tr>
+                                        <td colspan="4" class="event-category">User Events</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>user_status_update</code></td>
+                                        <td>Server → Client</td>
+                                        <td>Emitted when a user's status is updated</td>
+                                        <td><pre><code class="json">{
+  "userId": "123e4567-e89b-12d3-a456-426614174000",
+  "statusText": "In a meeting",
+  "expiresAt": "2023-04-15T16:30:00Z"
+}</code></pre></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>user_online</code></td>
+                                        <td>Server → Client</td>
+                                        <td>Emitted when a user comes online</td>
+                                        <td><pre><code class="json">{
+  "userId": "123e4567-e89b-12d3-a456-426614174000"
+}</code></pre></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>user_offline</code></td>
+                                        <td>Server → Client</td>
+                                        <td>Emitted when a user goes offline</td>
+                                        <td><pre><code class="json">{
+  "userId": "123e4567-e89b-12d3-a456-426614174000"
+}</code></pre></td>
+                                    </tr>
+                                    
+                                    <!-- Channel Events -->
+                                    <tr>
+                                        <td colspan="4" class="event-category">Channel Events</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>channel_created</code></td>
+                                        <td>Server → Client</td>
+                                        <td>Emitted when a new channel is created</td>
+                                        <td><pre><code class="json">{
+  "channelId": "123e4567-e89b-12d3-a456-426614174000",
+  "name": "project-x",
+  "description": "Channel for Project X discussion",
+  "isPublic": true,
+  "topic": "Project X planning and updates",
+  "createdBy": "123e4567-e89b-12d3-a456-426614174001",
+  "createdAt": "2023-04-15T14:30:00Z",
+  "workspaceId": "123e4567-e89b-12d3-a456-426614174002"
+}</code></pre></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>channel_updated</code></td>
+                                        <td>Server → Client</td>
+                                        <td>Emitted when a channel's details are updated</td>
+                                        <td><pre><code class="json">{
+  "channelId": "123e4567-e89b-12d3-a456-426614174000",
+  "name": "project-x-revised",
+  "description": "Updated description for Project X",
+  "isPublic": true,
+  "topic": "Project X planning, updates, and resources"
+}</code></pre></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>channel_deleted</code></td>
+                                        <td>Server → Client</td>
+                                        <td>Emitted when a channel is deleted</td>
+                                        <td><pre><code class="json">{
+  "channelId": "123e4567-e89b-12d3-a456-426614174000"
+}</code></pre></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>channel_member_added</code></td>
+                                        <td>Server → Client</td>
+                                        <td>Emitted when a user joins a channel</td>
+                                        <td><pre><code class="json">{
+  "channelId": "123e4567-e89b-12d3-a456-426614174000",
+  "userId": "123e4567-e89b-12d3-a456-426614174001",
+  "role": "member",
+  "joinedAt": "2023-04-15T14:35:00Z"
+}</code></pre></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>channel_member_removed</code></td>
+                                        <td>Server → Client</td>
+                                        <td>Emitted when a user leaves a channel</td>
+                                        <td><pre><code class="json">{
+  "channelId": "123e4567-e89b-12d3-a456-426614174000",
+  "userId": "123e4567-e89b-12d3-a456-426614174001"
+}</code></pre></td>
+                                    </tr>
+                                    
+                                    <!-- Message Events -->
+                                    <tr>
+                                        <td colspan="4" class="event-category">Message Events</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>new_message</code></td>
+                                        <td>Server → Client</td>
+                                        <td>Emitted when a new message is sent in a channel</td>
+                                        <td><pre><code class="json">{
+  "messageId": "123e4567-e89b-12d3-a456-426614174000",
+  "channelId": "123e4567-e89b-12d3-a456-426614174001",
+  "content": "Hello team! Check out this document.",
+  "sender": {
+    "userId": "123e4567-e89b-12d3-a456-426614174002",
+    "displayName": "Jane Doe",
+    "avatarUrl": "https://example.com/avatars/jane.jpg"
+  },
+  "createdAt": "2023-04-15T14:40:00Z",
+  "hasAttachment": true,
+  "attachments": [
+    {
+      "fileId": "123e4567-e89b-12d3-a456-426614174003",
+      "fileName": "project-plan.pdf",
+      "fileUrl": "https://example.com/files/project-plan.pdf",
+      "mimeType": "application/pdf",
+      "fileSize": 1024000
+    }
+  ]
+}</code></pre></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>message_updated</code></td>
+                                        <td>Server → Client</td>
+                                        <td>Emitted when a message is updated</td>
+                                        <td><pre><code class="json">{
+  "messageId": "123e4567-e89b-12d3-a456-426614174000",
+  "channelId": "123e4567-e89b-12d3-a456-426614174001",
+  "content": "Hello team! Check out this updated document.",
+  "updatedAt": "2023-04-15T14:45:00Z"
+}</code></pre></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>message_deleted</code></td>
+                                        <td>Server → Client</td>
+                                        <td>Emitted when a message is deleted</td>
+                                        <td><pre><code class="json">{
+  "messageId": "123e4567-e89b-12d3-a456-426614174000",
+  "channelId": "123e4567-e89b-12d3-a456-426614174001"
+}</code></pre></td>
+                                    </tr>
+                                    
+                                    <!-- Direct Message Events -->
+                                    <tr>
+                                        <td colspan="4" class="event-category">Direct Message Events</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>new_direct_message</code></td>
+                                        <td>Server → Client</td>
+                                        <td>Emitted when a new direct message is sent</td>
+                                        <td><pre><code class="json">{
+  "directMessageId": "123e4567-e89b-12d3-a456-426614174000",
+  "content": "Hi, do you have a moment to discuss the project?",
+  "sender": {
+    "userId": "123e4567-e89b-12d3-a456-426614174001",
+    "displayName": "John Smith",
+    "avatarUrl": "https://example.com/avatars/john.jpg"
+  },
+  "recipient": {
+    "userId": "123e4567-e89b-12d3-a456-426614174002",
+    "displayName": "Jane Doe",
+    "avatarUrl": "https://example.com/avatars/jane.jpg"
+  },
+  "createdAt": "2023-04-15T15:00:00Z",
+  "hasAttachment": false
+}</code></pre></td>
+                                    </tr>
+                                    
+                                    <!-- Reaction Events -->
+                                    <tr>
+                                        <td colspan="4" class="event-category">Reaction Events</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>new_reaction</code></td>
+                                        <td>Server → Client</td>
+                                        <td>Emitted when a new reaction is added to a message</td>
+                                        <td><pre><code class="json">{
+  "reactionId": "123e4567-e89b-12d3-a456-426614174000",
+  "messageId": "123e4567-e89b-12d3-a456-426614174001",
+  "directMessageId": null,
+  "emoji": "👍",
+  "user": {
+    "userId": "123e4567-e89b-12d3-a456-426614174002",
+    "displayName": "Jane Doe"
+  },
+  "createdAt": "2023-04-15T15:05:00Z"
+}</code></pre></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>reaction_removed</code></td>
+                                        <td>Server → Client</td>
+                                        <td>Emitted when a reaction is removed from a message</td>
+                                        <td><pre><code class="json">{
+  "reactionId": "123e4567-e89b-12d3-a456-426614174000",
+  "messageId": "123e4567-e89b-12d3-a456-426614174001",
+  "directMessageId": null
+}</code></pre></td>
+                                    </tr>
+                                    
+                                    <!-- Thread Events -->
+                                    <tr>
+                                        <td colspan="4" class="event-category">Thread Events</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>new_thread_reply</code></td>
+                                        <td>Server → Client</td>
+                                        <td>Emitted when a new reply is added to a thread</td>
+                                        <td><pre><code class="json">{
+  "threadId": "123e4567-e89b-12d3-a456-426614174000",
+  "parentMessageId": "123e4567-e89b-12d3-a456-426614174001",
+  "content": "I agree with your assessment.",
+  "sender": {
+    "userId": "123e4567-e89b-12d3-a456-426614174002",
+    "displayName": "Jane Doe",
+    "avatarUrl": "https://example.com/avatars/jane.jpg"
+  },
+  "createdAt": "2023-04-15T15:10:00Z"
+}</code></pre></td>
+                                    </tr>
+                                    
+                                    <!-- Pin Events -->
+                                    <tr>
+                                        <td colspan="4" class="event-category">Pin Events</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>new_pin</code></td>
+                                        <td>Server → Client</td>
+                                        <td>Emitted when an item is pinned to a channel</td>
+                                        <td><pre><code class="json">{
+  "pinnedItemId": "123e4567-e89b-12d3-a456-426614174000",
+  "channelId": "123e4567-e89b-12d3-a456-426614174001",
+  "messageId": "123e4567-e89b-12d3-a456-426614174002",
+  "fileId": null,
+  "pinnedBy": {
+    "userId": "123e4567-e89b-12d3-a456-426614174003",
+    "displayName": "Jane Doe"
+  },
+  "pinnedAt": "2023-04-15T15:15:00Z"
+}</code></pre></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>pin_removed</code></td>
+                                        <td>Server → Client</td>
+                                        <td>Emitted when an item is unpinned from a channel</td>
+                                        <td><pre><code class="json">{
+  "pinnedItemId": "123e4567-e89b-12d3-a456-426614174000",
+  "channelId": "123e4567-e89b-12d3-a456-426614174001"
+}</code></pre></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
